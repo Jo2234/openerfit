@@ -1,0 +1,31 @@
+{
+  "scenario": "fx-edge",
+  "synthetic": true,
+  "label": "synthetic fixture fx-edge (hand-written)",
+  "entries": [
+    {
+      "endpoint": "/v2/insights",
+      "canonicalQuery": "filter.results.entities=fx-edge-a%2Cfx-edge-b%2Cfx-edge-c%2Cfx-edge-d%2Cfx-edge-e%2Cfx-edge-f&filter.type=urn%3Aentity%3Aartist&signal.interests.entities=fx-edge-headliner&take=6",
+      "file": "ranking.json",
+      "status": 200
+    },
+    {
+      "endpoint": "/v2/insights",
+      "canonicalQuery": "filter.type=urn%3Aentity%3Abrand&signal.interests.entities=fx-edge-headliner&take=8",
+      "file": "empty-brand.json",
+      "status": 200
+    },
+    {
+      "endpoint": "/v2/insights",
+      "canonicalQuery": "filter.geocode.name=Fiction+City&filter.type=urn%3Aentity%3Aplace&signal.interests.entities=fx-edge-headliner&take=8",
+      "file": "place-no-coordinates.json",
+      "status": 200
+    },
+    {
+      "endpoint": "/v2/insights",
+      "canonicalQuery": "filter.results.entities=fx-edge-a%2Cfx-edge-b%2Cfx-edge-c%2Cfx-edge-d%2Cfx-edge-e%2Cfx-edge-f&filter.type=urn%3Aentity%3Aartist&signal.interests.entities=fx-edge-empty&take=6",
+      "file": "empty-ranking.json",
+      "status": 200
+    }
+  ]
+}

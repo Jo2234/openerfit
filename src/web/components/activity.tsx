@@ -1,0 +1,17 @@
+import type { RunView } from '../run-state';
+import { hasTerminalResult, isTerminal, needsTerminalRecovery } from '../run-state';
+import { COPY } from '../../shared/copy';
+import { ApiError, errorCopy } from '../api';
+import { ReceiptChip } from './receipt';
+export function Activity({view,pending,onCancel,onReconnect,onReceipt}:{view:RunView;pending:boolean;onCancel:()=>void;onReconnect:()=>void;onReceipt:(id:string)=>void}) {
+  const complete=view.state==='done'&&hasTerminalResult(view),missingTerminal=needsTerminalRecovery(view);
+  const label=missingTerminal?(view.state==='done'?'Completion announced — final brief pending':view.state==='failed'?'Failure announced — final details pending':'Cancellation confirmed — final details pending'):view.state==='queued'?'Starting your brief…':view.state==='done'?'Brief complete':view.state==='cancelled'?'Run cancelled':view.state==='failed'?'Run could not be completed':COPY.progress[view.state];
+  return <section className={`paper activity ${isTerminal(view.state)?'terminal':''}`} aria-label="Agent activity"><div className="activity-heading"><div><p className="eyebrow">Booking desk activity</p><h3 aria-live="polite">{label}</h3></div>{!isTerminal(view.state)&&<button type="button" disabled={pending} onClick={onCancel}>{pending?'Cancelling…':'Cancel run'}</button>}</div>
+    {!isTerminal(view.state)&&<div className="progress-track" aria-hidden="true"><span/></div>}
+    {missingTerminal&&<div className="connection-note" role="status"><p>The server announced a terminal state, but the final run details have not arrived. Recover them with one explicit request; this does not start another run.</p><button disabled={view.connection==='recovering'} onClick={onReconnect}>{view.connection==='recovering'?'Recovering final result…':'Recover final result'}</button></div>}
+    {!isTerminal(view.state)&&view.connection==='interrupted'&&<div className="connection-note" role="status"><p>The live connection was interrupted. The server may still be working. Reconnect to request the current run and resume its stream.</p><button onClick={onReconnect}>Reconnect to this run</button></div>}
+    {view.state==='cancelled'&&<p>Your inputs are preserved. Return to setup when you’re ready to try again.</p>}
+    {view.error&&<p className="field-error" role="alert">{errorCopy(new ApiError(view.error.code))} <code>{view.error.code}</code></p>}
+    <details open={!complete}><summary>Agent trace · {view.steps.length} steps</summary>{!view.steps.length?<p className="muted">Waiting for the first recorded step…</p>:<ol className="trace-list">{view.steps.map(step=><li key={step.index}><span className="trace-index">{String(step.index+1).padStart(2,'0')}</span><div><div className="trace-meta"><strong>{step.tool??step.kind.replaceAll('_',' ')}</strong><span>{step.planner}</span><span>{step.status}</span><span title={`${step.durationMs} ms`}>{Math.round(step.durationMs)} ms</span></div><p>{step.summary}</p>{step.error&&<p className="field-error">{step.error.message} <code>{step.error.code}</code></p>}<div className="trace-receipts">{step.receiptIds.map(id=><ReceiptChip key={id} id={id} receipt={view.result?.brief?.receipts.find(r=>r.id===id)} ready={complete} onOpen={onReceipt}/>)}</div></div></li>)}</ol>}{!complete&&view.steps.some(s=>s.receiptIds.length>0)&&<p className="muted">Receipt inspection becomes available when the brief completes.</p>}</details>
+  </section>;
+}

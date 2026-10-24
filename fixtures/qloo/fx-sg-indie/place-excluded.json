@@ -1,0 +1,80 @@
+{
+  "results": {
+    "entities": [
+      {
+        "entity_id": "fx-place-0",
+        "name": "Lorong Lights Bar",
+        "subtype": "urn:entity:place",
+        "location": {
+          "lat": 1.3021,
+          "lon": 103.859
+        },
+        "properties": {
+          "address": "Fictional address"
+        },
+        "tags": [
+          {
+            "id": "urn:tag:fixture:place:craft_beer",
+            "name": "Craft Beer"
+          }
+        ],
+        "query": {
+          "affinity": 0.882
+        }
+      },
+      {
+        "entity_id": "fx-place-1",
+        "name": "Kampong Craft Taproom",
+        "subtype": "urn:entity:place",
+        "location": {
+          "lat": 1.295,
+          "lon": 103.85
+        },
+        "properties": {
+          "address": "Fictional address"
+        },
+        "tags": [
+          {
+            "id": "urn:tag:fixture:place:craft_beer",
+            "name": "Craft Beer"
+          }
+        ],
+        "query": {
+          "affinity": 0.8455
+        }
+      },
+      {
+        "entity_id": "fx-place-2",
+        "name": "Pagoda Street Records",
+        "subtype": "urn:entity:place",
+        "location": {
+          "lat": 1.2836,
+          "lon": 103.8443
+        },
+        "properties": {
+          "address": "Fictional address"
+        },
+        "tags": [],
+        "query": {
+          "affinity": 0.8011
+        }
+      },
+      {
+        "entity_id": "fx-place-3",
+        "name": "Far Pier Lounge",
+        "subtype": "urn:entity:place",
+        "location": {
+          "lat": 1.34,
+          "lon": 103.9
+        },
+        "properties": {
+          "address": "Fictional address"
+        },
+        "tags": [],
+        "query": {
+          "affinity": 0.755
+        }
+      }
+    ]
+  }
+}

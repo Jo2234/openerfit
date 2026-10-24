@@ -1,0 +1,6531 @@
+{
+  "insights": {
+    "urn:entity:artist": {
+      "backfill.content_based.take": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10,
+          "default": 10
+        }
+      },
+      "backfill.cross_domain.take": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 20,
+          "default": 20
+        }
+      },
+      "bias.content_based": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "number",
+          "format": "integer",
+          "default": 0.5,
+          "maximum": 1,
+          "minimum": 0
+        }
+      },
+      "bias.quality": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "very_low",
+                "low",
+                "mid",
+                "medium",
+                "high",
+                "very_high"
+              ]
+            },
+            {
+              "type": "number",
+              "exclusiveMinimum": 0
+            }
+          ],
+          "examples": [
+            "high"
+          ]
+        }
+      },
+      "bias.trends": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "off",
+            "very_low",
+            "low",
+            "mid",
+            "medium",
+            "high",
+            "very_high"
+          ],
+          "default": "medium"
+        }
+      },
+      "diversify.by": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "properties.geocode.city",
+            "properties.geocode.metro",
+            "subtype"
+          ],
+          "examples": [
+            "properties.geocode.city",
+            "properties.geocode.metro",
+            "subtype"
+          ]
+        }
+      },
+      "diversify.take": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 1,
+          "examples": [
+            5
+          ]
+        }
+      },
+      "feature.explainability": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "boolean",
+          "examples": [
+            true
+          ]
+        }
+      },
+      "filter.address": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "filter.audience.types": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "filter.content_rating": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "G",
+            "PG",
+            "PG-13",
+            "R",
+            "NC-17",
+            "TV-G",
+            "TV-PG",
+            "TV-14",
+            "TV-MA",
+            "TV-Y",
+            "TV-Y7",
+            "TV-Y7-FV",
+            "Not Rated",
+            "Unrated",
+            "Approved",
+            "Passed",
+            "X",
+            "GP",
+            "M",
+            "13+",
+            "16+",
+            "18+"
+          ],
+          "examples": [
+            "PG-13",
+            "TV-MA",
+            "R,TV-14"
+          ]
+        }
+      },
+      "filter.date_of_birth.max": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "format": "date",
+          "examples": [
+            "2004-01-01"
+          ]
+        }
+      },
+      "filter.date_of_birth.min": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "format": "date",
+          "examples": [
+            "1996-01-01"
+          ]
+        }
+      },
+      "filter.date_of_death.max": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "format": "date",
+          "examples": [
+            "2004-01-01"
+          ]
+        }
+      },
+      "filter.date_of_death.min": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "format": "date",
+          "examples": [
+            "1985-01-01"
+          ]
+        }
+      },
+      "filter.dimensions.hotel_class": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 5
+          },
+          "examples": [
+            4,
+            5
+          ]
+        }
+      },
+      "filter.dimensions.price_level": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 4
+          },
+          "examples": [
+            1,
+            2
+          ]
+        }
+      },
+      "filter.entities": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "filter.entities.query": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "examples": [
+            "restaurant"
+          ]
+        }
+      },
+      "filter.entity_ids": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "filter.exclude.entities": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "examples": [
+            "39458DC0-F91D-4591-80A8-E254E66F84A2,B315A4B4-6756-4CF3-8297-75FD94CC8CF2"
+          ]
+        }
+      },
+      "filter.exclude.entities.query": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "address": {
+                    "type": "string"
+                  }
+                }
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "examples": [
+            {
+              "name": "Balthazar",
+              "address": "80 Spring St, New York"
+            },
+            "Balthazar"
+          ]
+        }
+      },
+      "filter.exclude.location": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "examples": [
+            "POINT(-73.99823 40.722668)"
+          ]
+        }
+      },
+      "filter.exclude.location.geohash": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "examples": [
+            "dr5rs"
+          ]
+        }
+      },
+      "filter.exclude.location.query": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
+        }
+      },
+      "filter.exclude.location.radius": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "examples": [
+            10000
+          ]
+        }
+      },
+      "filter.exclude.tags": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "examples": [
+            "urn:tag:genre:media:mystery,urn:tag:genre:media:drama"
+          ]
+        }
+      },
+      "filter.exists": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "properties.image",
+            "properties.description"
+          ],
+          "examples": [
+            "properties.image",
+            "properties.description"
+          ]
+        }
+      },
+      "filter.external.exists": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "examples": [
+            "resy,michelin"
+          ]
+        }
+      },
+      "filter.external.resy.count.max": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 0,
+          "examples": [
+            200
+          ]
+        }
+      },
+      "filter.external.resy.count.min": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 0,
+          "examples": [
+            20
+          ]
+        }
+      },
+      "filter.external.resy.party_size.max": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 1,
+          "examples": [
+            10
+          ]
+        }
+      },
+      "filter.external.resy.party_size.min": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 1,
+          "examples": [
+            2
+          ]
+        }
+      },
+      "filter.external.resy.rating.max": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 5,
+          "examples": [
+            4.5
+          ]
+        }
+      },
+      "filter.external.resy.rating.min": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 5,
+          "examples": [
+            3.5
+          ]
+        }
+      },
+      "filter.external.tripadvisor.rating.count.max": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 0,
+          "examples": [
+            500
+          ]
+        }
+      },
+      "filter.external.tripadvisor.rating.count.min": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 0,
+          "examples": [
+            50
+          ]
+        }
+      },
+      "filter.external.tripadvisor.rating.max": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 5,
+          "examples": [
+            4
+          ]
+        }
+      },
+      "filter.external.tripadvisor.rating.min": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 5,
+          "examples": [
+            3
+          ]
+        }
+      },
+      "filter.finale_year.max": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "examples": [
+            2021
+          ]
+        }
+      },
+      "filter.finale_year.min": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "examples": [
+            2014
+          ]
+        }
+      },
+      "filter.gender": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "examples": [
+            "female"
+          ]
+        }
+      },
+      "filter.geocode.admin1_region": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "examples": [
+            "NY"
+          ]
+        }
+      },
+      "filter.geocode.admin2_region": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "examples": [
+            "New York County"
+          ]
+        }
+      },
+      "filter.geocode.country_code": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "examples": [
+            "US"
+          ]
+        }
+      },
+      "filter.geocode.name": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "examples": [
+            "New York"
+          ]
+        }
+      },
+      "filter.hotel_class.max": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5,
+          "examples": [
+            5
+          ]
+        }
+      },
+      "filter.hotel_class.min": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5,
+          "examples": [
+            3
+          ]
+        }
+      },
+      "filter.hours": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "monday",
+            "tuesday",
+            "wednesday",
+            "thursday",
+            "friday",
+            "saturday",
+            "sunday"
+          ],
+          "examples": [
+            "monday"
+          ]
+        }
+      },
+      "filter.ids": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "filter.latest_known_year.max": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {}
+      },
+      "filter.latest_known_year.min": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {}
+      },
+      "filter.location": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "filter.location.geohash": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "examples": [
+            "dr5rsjk4sr2w"
+          ]
+        }
+      },
+      "filter.location.metro": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "examples": [
+            "New York"
+          ]
+        }
+      },
+      "filter.location.query": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
+        }
+      },
+      "filter.location.radius": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "default": 15000,
+          "maximum": 800000
+        }
+      },
+      "filter.parents.types": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "urn:audience:communities",
+            "urn:audience:global_issues",
+            "urn:audience:hobbies_and_interests",
+            "urn:audience:investing_interests",
+            "urn:audience:leisure",
+            "urn:audience:life_stage",
+            "urn:audience:lifestyle_preferences_beliefs",
+            "urn:audience:political_preferences",
+            "urn:audience:professional_area",
+            "urn:audience:spending_habits"
+          ],
+          "examples": [
+            "urn:audience:communities",
+            "urn:audience:global_issues"
+          ]
+        }
+      },
+      "filter.popularity.max": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "examples": [
+            0.98
+          ]
+        }
+      },
+      "filter.popularity.min": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "examples": [
+            0.5
+          ]
+        }
+      },
+      "filter.price_level.max": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 4,
+          "examples": [
+            3
+          ]
+        }
+      },
+      "filter.price_level.min": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 4,
+          "examples": [
+            1
+          ]
+        }
+      },
+      "filter.price_range.from": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000,
+          "examples": [
+            200
+          ]
+        }
+      },
+      "filter.price_range.max": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "filter.price_range.min": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "filter.price_range.to": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000,
+          "examples": [
+            200
+          ]
+        }
+      },
+      "filter.properties.business_rating.max": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "number",
+          "format": "float",
+          "enum": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "examples": [
+            3
+          ]
+        }
+      },
+      "filter.properties.business_rating.min": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "number",
+          "format": "float",
+          "enum": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "examples": [
+            3
+          ]
+        }
+      },
+      "filter.publication_year.max": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "number",
+          "examples": [
+            2021
+          ]
+        }
+      },
+      "filter.publication_year.min": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "number",
+          "examples": [
+            1985
+          ]
+        }
+      },
+      "filter.rating.max": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 5,
+          "examples": [
+            4.5
+          ]
+        }
+      },
+      "filter.rating.min": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 5,
+          "examples": [
+            3.5
+          ]
+        }
+      },
+      "filter.references_brand": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "examples": [
+            "636E1B95-6232-43E1-BDFE-37CD209C2CE3,7D2B1DFF-9D5D-44DE-970E-46B80C76CFA6"
+          ]
+        }
+      },
+      "filter.release_country": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "examples": [
+            "United States",
+            "France"
+          ]
+        }
+      },
+      "filter.release_date.max": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "format": "date",
+          "examples": [
+            "2024-01-01"
+          ]
+        }
+      },
+      "filter.release_date.min": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "format": "date",
+          "examples": [
+            "2021-01-01"
+          ]
+        }
+      },
+      "filter.release_year.max": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "examples": [
+            2024
+          ]
+        }
+      },
+      "filter.release_year.min": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "examples": [
+            1996
+          ]
+        }
+      },
+      "filter.results.entities": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "examples": [
+            "636E1B95-6232-43E1-BDFE-37CD209C2CE3,7D2B1DFF-9D5D-44DE-970E-46B80C76CFA6"
+          ]
+        }
+      },
+      "filter.results.entities.query": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
+        }
+      },
+      "filter.results.tags": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "examples": [
+            "urn:tag:genre:place:restaurant:japanese",
+            "urn:tag:style:qloo:indie"
+          ]
+        }
+      },
+      "filter.tag.types": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "filter.tags": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "filter.type": {
+        "tier": "guide",
+        "required": true,
+        "schema": {
+          "examples": [
+            "urn:entity:book"
+          ],
+          "type": "string",
+          "enum": [
+            "urn:entity:artist",
+            "urn:entity:book",
+            "urn:entity:brand",
+            "urn:entity:locality",
+            "urn:entity:movie",
+            "urn:entity:person",
+            "urn:entity:place",
+            "urn:entity:podcast",
+            "urn:entity:tv_show",
+            "urn:entity:videogame",
+            "urn:heatmap",
+            "urn:entity:audience"
+          ],
+          "x-enum-descriptions": [
+            "Artist",
+            "Book",
+            "Brand",
+            "Locality (partially supported)",
+            "Movie",
+            "Person",
+            "Place",
+            "Podcast",
+            "TV show",
+            "Videogame",
+            "Heatmap",
+            "Audience (deprecated)"
+          ]
+        }
+      },
+      "heatmap.dimensions": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "quality",
+              "popularity",
+              "hotel_class",
+              "price_level"
+            ]
+          },
+          "examples": [
+            "quality",
+            "price_level"
+          ]
+        }
+      },
+      "offset": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "examples": [
+            5
+          ]
+        }
+      },
+      "operator.exclude.tags": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "operator.filter.exclude.tags": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "union",
+            "intersection"
+          ],
+          "examples": [
+            "union"
+          ]
+        }
+      },
+      "operator.filter.external.exists": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "union",
+            "intersection"
+          ],
+          "examples": [
+            "union"
+          ]
+        }
+      },
+      "operator.filter.references_brand": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "union",
+            "intersection"
+          ],
+          "examples": [
+            "union"
+          ]
+        }
+      },
+      "operator.filter.release_country": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "intersection",
+            "union"
+          ],
+          "examples": [
+            "union"
+          ]
+        }
+      },
+      "operator.filter.tags": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "intersection",
+            "union"
+          ],
+          "default": "union"
+        }
+      },
+      "operator.signal.interests.tags": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "union",
+            "intersection"
+          ],
+          "examples": [
+            "union"
+          ]
+        }
+      },
+      "output.heatmap.boundary": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "examples": [
+            "urn:entity:locality"
+          ]
+        }
+      },
+      "page": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "format": "int32",
+          "minimum": 1,
+          "maximum": 100,
+          "default": 1
+        }
+      },
+      "signal.demographics.age": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "35_and_younger",
+            "36_to_55",
+            "24_and_younger",
+            "25_to_29",
+            "30_to_34",
+            "35_to_44",
+            "45_to_54",
+            "55_and_older"
+          ],
+          "examples": [
+            "36_to_55"
+          ]
+        }
+      },
+      "signal.demographics.age.weight": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "oneOf": [
+            {
+              "type": "number",
+              "minimum": 0
+            },
+            {
+              "type": "string",
+              "enum": [
+                "very_low",
+                "low",
+                "mid",
+                "medium",
+                "high",
+                "very_high"
+              ]
+            }
+          ],
+          "examples": [
+            "medium"
+          ]
+        }
+      },
+      "signal.demographics.audiences": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "examples": [
+            "urn:audience:communities",
+            "urn:audience:spending_habits"
+          ]
+        }
+      },
+      "signal.demographics.audiences.weight": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "oneOf": [
+            {
+              "type": "number",
+              "minimum": 0
+            },
+            {
+              "type": "string",
+              "enum": [
+                "very_low",
+                "low",
+                "mid",
+                "medium",
+                "high",
+                "very_high"
+              ]
+            }
+          ],
+          "examples": [
+            "medium"
+          ]
+        }
+      },
+      "signal.demographics.gender": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "male",
+            "female"
+          ],
+          "examples": [
+            "male"
+          ]
+        }
+      },
+      "signal.demographics.gender.weight": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "oneOf": [
+            {
+              "type": "number",
+              "minimum": 0
+            },
+            {
+              "type": "string",
+              "enum": [
+                "very_low",
+                "low",
+                "mid",
+                "medium",
+                "high",
+                "very_high"
+              ]
+            }
+          ],
+          "examples": [
+            "medium"
+          ]
+        }
+      },
+      "signal.interests.entities": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "examples": [
+            "636E1B95-6232-43E1-BDFE-37CD209C2CE3,7D2B1DFF-9D5D-44DE-970E-46B80C76CFA6"
+          ]
+        }
+      },
+      "signal.interests.entities.include": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "examples": [
+            "E12345,E67890"
+          ]
+        }
+      },
+      "signal.interests.entities.query": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "address": {
+                    "type": "string"
+                  },
+                  "resolve_to": {
+                    "type": "string",
+                    "enum": [
+                      "place",
+                      "brand",
+                      "both"
+                    ]
+                  }
+                }
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "examples": [
+            {
+              "name": "Balthazar",
+              "address": "80 Spring St, New York"
+            },
+            "Balthazar",
+            {
+              "name": "Naya",
+              "address": "ny",
+              "resolve_to": "both"
+            }
+          ]
+        }
+      },
+      "signal.interests.entities.weight": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "oneOf": [
+            {
+              "type": "number",
+              "minimum": 0
+            },
+            {
+              "type": "string",
+              "enum": [
+                "very_low",
+                "low",
+                "mid",
+                "medium",
+                "high",
+                "very_high"
+              ]
+            }
+          ],
+          "examples": [
+            "medium"
+          ]
+        }
+      },
+      "signal.interests.tags": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "tag": {
+                    "type": "string"
+                  },
+                  "weight": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "signal.interests.tags.weight": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "oneOf": [
+            {
+              "type": "number",
+              "minimum": 0
+            },
+            {
+              "type": "string",
+              "enum": [
+                "very_low",
+                "low",
+                "mid",
+                "medium",
+                "high",
+                "very_high"
+              ]
+            }
+          ],
+          "examples": [
+            "medium"
+          ]
+        }
+      },
+      "signal.location": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "examples": [
+            "POINT(-73.99823 40.722668)"
+          ]
+        }
+      },
+      "signal.location.query": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "examples": [
+            "New York City"
+          ]
+        }
+      },
+      "signal.location.radius": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "maximum": 800000,
+          "examples": [
+            5000
+          ]
+        }
+      },
+      "signal.location.weight": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "oneOf": [
+            {
+              "type": "number",
+              "minimum": 0
+            },
+            {
+              "type": "string",
+              "enum": [
+                "very_low",
+                "low",
+                "mid",
+                "medium",
+                "high",
+                "very_high"
+              ]
+            }
+          ],
+          "examples": [
+            "medium"
+          ]
+        }
+      },
+      "sort_by": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "affinity",
+            "distance",
+            "rating",
+            "quality"
+          ],
+          "examples": [
+            "affinity"
+          ]
+        }
+      },
+      "take": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "default": 20,
+          "minimum": 1,
+          "maximum": 50,
+          "examples": [
+            10
+          ]
+        }
+      }
+    },
+    "urn:entity:brand": {
+      "backfill.content_based.take": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10,
+          "default": 10
+        }
+      },
+      "backfill.cross_domain.take": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 20,
+          "default": 20
+        }
+      },
+      "bias.content_based": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "number",
+          "format": "integer",
+          "default": 0.5,
+          "maximum": 1,
+          "minimum": 0
+        }
+      },
+      "bias.quality": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "very_low",
+                "low",
+                "mid",
+                "medium",
+                "high",
+                "very_high"
+              ]
+            },
+            {
+              "type": "number",
+              "exclusiveMinimum": 0
+            }
+          ],
+          "examples": [
+            "high"
+          ]
+        }
+      },
+      "bias.trends": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "off",
+            "very_low",
+            "low",
+            "mid",
+            "medium",
+            "high",
+            "very_high"
+          ],
+          "default": "medium"
+        }
+      },
+      "diversify.by": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "properties.geocode.city",
+            "properties.geocode.metro",
+            "subtype"
+          ],
+          "examples": [
+            "properties.geocode.city",
+            "properties.geocode.metro",
+            "subtype"
+          ]
+        }
+      },
+      "diversify.take": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 1,
+          "examples": [
+            5
+          ]
+        }
+      },
+      "feature.explainability": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "boolean",
+          "examples": [
+            true
+          ]
+        }
+      },
+      "filter.address": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "filter.audience.types": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "filter.content_rating": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "G",
+            "PG",
+            "PG-13",
+            "R",
+            "NC-17",
+            "TV-G",
+            "TV-PG",
+            "TV-14",
+            "TV-MA",
+            "TV-Y",
+            "TV-Y7",
+            "TV-Y7-FV",
+            "Not Rated",
+            "Unrated",
+            "Approved",
+            "Passed",
+            "X",
+            "GP",
+            "M",
+            "13+",
+            "16+",
+            "18+"
+          ],
+          "examples": [
+            "PG-13",
+            "TV-MA",
+            "R,TV-14"
+          ]
+        }
+      },
+      "filter.date_of_birth.max": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "format": "date",
+          "examples": [
+            "2004-01-01"
+          ]
+        }
+      },
+      "filter.date_of_birth.min": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "format": "date",
+          "examples": [
+            "1996-01-01"
+          ]
+        }
+      },
+      "filter.date_of_death.max": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "format": "date",
+          "examples": [
+            "2004-01-01"
+          ]
+        }
+      },
+      "filter.date_of_death.min": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "format": "date",
+          "examples": [
+            "1985-01-01"
+          ]
+        }
+      },
+      "filter.dimensions.hotel_class": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 5
+          },
+          "examples": [
+            4,
+            5
+          ]
+        }
+      },
+      "filter.dimensions.price_level": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 4
+          },
+          "examples": [
+            1,
+            2
+          ]
+        }
+      },
+      "filter.entities": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "filter.entities.query": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "examples": [
+            "restaurant"
+          ]
+        }
+      },
+      "filter.entity_ids": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "filter.exclude.entities": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "examples": [
+            "39458DC0-F91D-4591-80A8-E254E66F84A2,B315A4B4-6756-4CF3-8297-75FD94CC8CF2"
+          ]
+        }
+      },
+      "filter.exclude.entities.query": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "address": {
+                    "type": "string"
+                  }
+                }
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "examples": [
+            {
+              "name": "Balthazar",
+              "address": "80 Spring St, New York"
+            },
+            "Balthazar"
+          ]
+        }
+      },
+      "filter.exclude.location": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "examples": [
+            "POINT(-73.99823 40.722668)"
+          ]
+        }
+      },
+      "filter.exclude.location.geohash": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "examples": [
+            "dr5rs"
+          ]
+        }
+      },
+      "filter.exclude.location.query": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
+        }
+      },
+      "filter.exclude.location.radius": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "examples": [
+            10000
+          ]
+        }
+      },
+      "filter.exclude.tags": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "examples": [
+            "urn:tag:genre:media:mystery,urn:tag:genre:media:drama"
+          ]
+        }
+      },
+      "filter.exists": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "properties.image",
+            "properties.description"
+          ],
+          "examples": [
+            "properties.image",
+            "properties.description"
+          ]
+        }
+      },
+      "filter.external.exists": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "examples": [
+            "resy,michelin"
+          ]
+        }
+      },
+      "filter.external.resy.count.max": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 0,
+          "examples": [
+            200
+          ]
+        }
+      },
+      "filter.external.resy.count.min": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 0,
+          "examples": [
+            20
+          ]
+        }
+      },
+      "filter.external.resy.party_size.max": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 1,
+          "examples": [
+            10
+          ]
+        }
+      },
+      "filter.external.resy.party_size.min": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 1,
+          "examples": [
+            2
+          ]
+        }
+      },
+      "filter.external.resy.rating.max": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 5,
+          "examples": [
+            4.5
+          ]
+        }
+      },
+      "filter.external.resy.rating.min": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 5,
+          "examples": [
+            3.5
+          ]
+        }
+      },
+      "filter.external.tripadvisor.rating.count.max": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 0,
+          "examples": [
+            500
+          ]
+        }
+      },
+      "filter.external.tripadvisor.rating.count.min": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 0,
+          "examples": [
+            50
+          ]
+        }
+      },
+      "filter.external.tripadvisor.rating.max": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 5,
+          "examples": [
+            4
+          ]
+        }
+      },
+      "filter.external.tripadvisor.rating.min": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 5,
+          "examples": [
+            3
+          ]
+        }
+      },
+      "filter.finale_year.max": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "examples": [
+            2021
+          ]
+        }
+      },
+      "filter.finale_year.min": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "examples": [
+            2014
+          ]
+        }
+      },
+      "filter.gender": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "examples": [
+            "female"
+          ]
+        }
+      },
+      "filter.geocode.admin1_region": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "examples": [
+            "NY"
+          ]
+        }
+      },
+      "filter.geocode.admin2_region": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "examples": [
+            "New York County"
+          ]
+        }
+      },
+      "filter.geocode.country_code": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "examples": [
+            "US"
+          ]
+        }
+      },
+      "filter.geocode.name": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "examples": [
+            "New York"
+          ]
+        }
+      },
+      "filter.hotel_class.max": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5,
+          "examples": [
+            5
+          ]
+        }
+      },
+      "filter.hotel_class.min": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5,
+          "examples": [
+            3
+          ]
+        }
+      },
+      "filter.hours": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "monday",
+            "tuesday",
+            "wednesday",
+            "thursday",
+            "friday",
+            "saturday",
+            "sunday"
+          ],
+          "examples": [
+            "monday"
+          ]
+        }
+      },
+      "filter.ids": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "filter.latest_known_year.max": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {}
+      },
+      "filter.latest_known_year.min": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {}
+      },
+      "filter.location": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "filter.location.geohash": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "examples": [
+            "dr5rsjk4sr2w"
+          ]
+        }
+      },
+      "filter.location.metro": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "examples": [
+            "New York"
+          ]
+        }
+      },
+      "filter.location.query": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
+        }
+      },
+      "filter.location.radius": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "default": 15000,
+          "maximum": 800000
+        }
+      },
+      "filter.parents.types": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "urn:audience:communities",
+            "urn:audience:global_issues",
+            "urn:audience:hobbies_and_interests",
+            "urn:audience:investing_interests",
+            "urn:audience:leisure",
+            "urn:audience:life_stage",
+            "urn:audience:lifestyle_preferences_beliefs",
+            "urn:audience:political_preferences",
+            "urn:audience:professional_area",
+            "urn:audience:spending_habits"
+          ],
+          "examples": [
+            "urn:audience:communities",
+            "urn:audience:global_issues"
+          ]
+        }
+      },
+      "filter.popularity.max": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "examples": [
+            0.98
+          ]
+        }
+      },
+      "filter.popularity.min": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "examples": [
+            0.5
+          ]
+        }
+      },
+      "filter.price_level.max": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 4,
+          "examples": [
+            3
+          ]
+        }
+      },
+      "filter.price_level.min": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 4,
+          "examples": [
+            1
+          ]
+        }
+      },
+      "filter.price_range.from": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000,
+          "examples": [
+            200
+          ]
+        }
+      },
+      "filter.price_range.max": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "filter.price_range.min": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "filter.price_range.to": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000,
+          "examples": [
+            200
+          ]
+        }
+      },
+      "filter.properties.business_rating.max": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "number",
+          "format": "float",
+          "enum": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "examples": [
+            3
+          ]
+        }
+      },
+      "filter.properties.business_rating.min": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "number",
+          "format": "float",
+          "enum": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "examples": [
+            3
+          ]
+        }
+      },
+      "filter.publication_year.max": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "number",
+          "examples": [
+            2021
+          ]
+        }
+      },
+      "filter.publication_year.min": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "number",
+          "examples": [
+            1985
+          ]
+        }
+      },
+      "filter.rating.max": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 5,
+          "examples": [
+            4.5
+          ]
+        }
+      },
+      "filter.rating.min": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 5,
+          "examples": [
+            3.5
+          ]
+        }
+      },
+      "filter.references_brand": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "examples": [
+            "636E1B95-6232-43E1-BDFE-37CD209C2CE3,7D2B1DFF-9D5D-44DE-970E-46B80C76CFA6"
+          ]
+        }
+      },
+      "filter.release_country": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "examples": [
+            "United States",
+            "France"
+          ]
+        }
+      },
+      "filter.release_date.max": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "format": "date",
+          "examples": [
+            "2024-01-01"
+          ]
+        }
+      },
+      "filter.release_date.min": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "format": "date",
+          "examples": [
+            "2021-01-01"
+          ]
+        }
+      },
+      "filter.release_year.max": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "examples": [
+            2024
+          ]
+        }
+      },
+      "filter.release_year.min": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "examples": [
+            1996
+          ]
+        }
+      },
+      "filter.results.entities": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "examples": [
+            "636E1B95-6232-43E1-BDFE-37CD209C2CE3,7D2B1DFF-9D5D-44DE-970E-46B80C76CFA6"
+          ]
+        }
+      },
+      "filter.results.entities.query": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
+        }
+      },
+      "filter.results.tags": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "examples": [
+            "urn:tag:genre:place:restaurant:japanese",
+            "urn:tag:style:qloo:indie"
+          ]
+        }
+      },
+      "filter.tag.types": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "filter.tags": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "filter.type": {
+        "tier": "guide",
+        "required": true,
+        "schema": {
+          "examples": [
+            "urn:entity:book"
+          ],
+          "type": "string",
+          "enum": [
+            "urn:entity:artist",
+            "urn:entity:book",
+            "urn:entity:brand",
+            "urn:entity:locality",
+            "urn:entity:movie",
+            "urn:entity:person",
+            "urn:entity:place",
+            "urn:entity:podcast",
+            "urn:entity:tv_show",
+            "urn:entity:videogame",
+            "urn:heatmap",
+            "urn:entity:audience"
+          ],
+          "x-enum-descriptions": [
+            "Artist",
+            "Book",
+            "Brand",
+            "Locality (partially supported)",
+            "Movie",
+            "Person",
+            "Place",
+            "Podcast",
+            "TV show",
+            "Videogame",
+            "Heatmap",
+            "Audience (deprecated)"
+          ]
+        }
+      },
+      "heatmap.dimensions": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "quality",
+              "popularity",
+              "hotel_class",
+              "price_level"
+            ]
+          },
+          "examples": [
+            "quality",
+            "price_level"
+          ]
+        }
+      },
+      "offset": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "examples": [
+            5
+          ]
+        }
+      },
+      "operator.exclude.tags": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "operator.filter.exclude.tags": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "union",
+            "intersection"
+          ],
+          "examples": [
+            "union"
+          ]
+        }
+      },
+      "operator.filter.external.exists": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "union",
+            "intersection"
+          ],
+          "examples": [
+            "union"
+          ]
+        }
+      },
+      "operator.filter.references_brand": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "union",
+            "intersection"
+          ],
+          "examples": [
+            "union"
+          ]
+        }
+      },
+      "operator.filter.release_country": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "intersection",
+            "union"
+          ],
+          "examples": [
+            "union"
+          ]
+        }
+      },
+      "operator.filter.tags": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "intersection",
+            "union"
+          ],
+          "default": "union"
+        }
+      },
+      "operator.signal.interests.tags": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "union",
+            "intersection"
+          ],
+          "examples": [
+            "union"
+          ]
+        }
+      },
+      "output.heatmap.boundary": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "examples": [
+            "urn:entity:locality"
+          ]
+        }
+      },
+      "page": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "format": "int32",
+          "minimum": 1,
+          "maximum": 100,
+          "default": 1
+        }
+      },
+      "signal.demographics.age": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "35_and_younger",
+            "36_to_55",
+            "24_and_younger",
+            "25_to_29",
+            "30_to_34",
+            "35_to_44",
+            "45_to_54",
+            "55_and_older"
+          ],
+          "examples": [
+            "36_to_55"
+          ]
+        }
+      },
+      "signal.demographics.age.weight": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "oneOf": [
+            {
+              "type": "number",
+              "minimum": 0
+            },
+            {
+              "type": "string",
+              "enum": [
+                "very_low",
+                "low",
+                "mid",
+                "medium",
+                "high",
+                "very_high"
+              ]
+            }
+          ],
+          "examples": [
+            "medium"
+          ]
+        }
+      },
+      "signal.demographics.audiences": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "examples": [
+            "urn:audience:communities",
+            "urn:audience:spending_habits"
+          ]
+        }
+      },
+      "signal.demographics.audiences.weight": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "oneOf": [
+            {
+              "type": "number",
+              "minimum": 0
+            },
+            {
+              "type": "string",
+              "enum": [
+                "very_low",
+                "low",
+                "mid",
+                "medium",
+                "high",
+                "very_high"
+              ]
+            }
+          ],
+          "examples": [
+            "medium"
+          ]
+        }
+      },
+      "signal.demographics.gender": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "male",
+            "female"
+          ],
+          "examples": [
+            "male"
+          ]
+        }
+      },
+      "signal.demographics.gender.weight": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "oneOf": [
+            {
+              "type": "number",
+              "minimum": 0
+            },
+            {
+              "type": "string",
+              "enum": [
+                "very_low",
+                "low",
+                "mid",
+                "medium",
+                "high",
+                "very_high"
+              ]
+            }
+          ],
+          "examples": [
+            "medium"
+          ]
+        }
+      },
+      "signal.interests.entities": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "examples": [
+            "636E1B95-6232-43E1-BDFE-37CD209C2CE3,7D2B1DFF-9D5D-44DE-970E-46B80C76CFA6"
+          ]
+        }
+      },
+      "signal.interests.entities.include": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "examples": [
+            "E12345,E67890"
+          ]
+        }
+      },
+      "signal.interests.entities.query": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "address": {
+                    "type": "string"
+                  },
+                  "resolve_to": {
+                    "type": "string",
+                    "enum": [
+                      "place",
+                      "brand",
+                      "both"
+                    ]
+                  }
+                }
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "examples": [
+            {
+              "name": "Balthazar",
+              "address": "80 Spring St, New York"
+            },
+            "Balthazar",
+            {
+              "name": "Naya",
+              "address": "ny",
+              "resolve_to": "both"
+            }
+          ]
+        }
+      },
+      "signal.interests.entities.weight": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "oneOf": [
+            {
+              "type": "number",
+              "minimum": 0
+            },
+            {
+              "type": "string",
+              "enum": [
+                "very_low",
+                "low",
+                "mid",
+                "medium",
+                "high",
+                "very_high"
+              ]
+            }
+          ],
+          "examples": [
+            "medium"
+          ]
+        }
+      },
+      "signal.interests.tags": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "tag": {
+                    "type": "string"
+                  },
+                  "weight": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "signal.interests.tags.weight": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "oneOf": [
+            {
+              "type": "number",
+              "minimum": 0
+            },
+            {
+              "type": "string",
+              "enum": [
+                "very_low",
+                "low",
+                "mid",
+                "medium",
+                "high",
+                "very_high"
+              ]
+            }
+          ],
+          "examples": [
+            "medium"
+          ]
+        }
+      },
+      "signal.location": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "examples": [
+            "POINT(-73.99823 40.722668)"
+          ]
+        }
+      },
+      "signal.location.query": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "examples": [
+            "New York City"
+          ]
+        }
+      },
+      "signal.location.radius": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "maximum": 800000,
+          "examples": [
+            5000
+          ]
+        }
+      },
+      "signal.location.weight": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "oneOf": [
+            {
+              "type": "number",
+              "minimum": 0
+            },
+            {
+              "type": "string",
+              "enum": [
+                "very_low",
+                "low",
+                "mid",
+                "medium",
+                "high",
+                "very_high"
+              ]
+            }
+          ],
+          "examples": [
+            "medium"
+          ]
+        }
+      },
+      "sort_by": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "affinity",
+            "distance",
+            "rating",
+            "quality"
+          ],
+          "examples": [
+            "affinity"
+          ]
+        }
+      },
+      "take": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "default": 20,
+          "minimum": 1,
+          "maximum": 50,
+          "examples": [
+            10
+          ]
+        }
+      }
+    },
+    "urn:entity:place": {
+      "backfill.content_based.take": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10,
+          "default": 10
+        }
+      },
+      "backfill.cross_domain.take": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 20,
+          "default": 20
+        }
+      },
+      "bias.content_based": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "number",
+          "format": "integer",
+          "default": 0.5,
+          "maximum": 1,
+          "minimum": 0
+        }
+      },
+      "bias.quality": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "very_low",
+                "low",
+                "mid",
+                "medium",
+                "high",
+                "very_high"
+              ]
+            },
+            {
+              "type": "number",
+              "exclusiveMinimum": 0
+            }
+          ],
+          "examples": [
+            "high"
+          ]
+        }
+      },
+      "bias.trends": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "off",
+            "very_low",
+            "low",
+            "mid",
+            "medium",
+            "high",
+            "very_high"
+          ],
+          "default": "medium"
+        }
+      },
+      "diversify.by": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "properties.geocode.city",
+            "properties.geocode.metro",
+            "subtype"
+          ],
+          "examples": [
+            "properties.geocode.city",
+            "properties.geocode.metro",
+            "subtype"
+          ]
+        }
+      },
+      "diversify.take": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 1,
+          "examples": [
+            5
+          ]
+        }
+      },
+      "feature.explainability": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "boolean",
+          "examples": [
+            true
+          ]
+        }
+      },
+      "filter.address": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "filter.audience.types": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "filter.content_rating": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "G",
+            "PG",
+            "PG-13",
+            "R",
+            "NC-17",
+            "TV-G",
+            "TV-PG",
+            "TV-14",
+            "TV-MA",
+            "TV-Y",
+            "TV-Y7",
+            "TV-Y7-FV",
+            "Not Rated",
+            "Unrated",
+            "Approved",
+            "Passed",
+            "X",
+            "GP",
+            "M",
+            "13+",
+            "16+",
+            "18+"
+          ],
+          "examples": [
+            "PG-13",
+            "TV-MA",
+            "R,TV-14"
+          ]
+        }
+      },
+      "filter.date_of_birth.max": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "format": "date",
+          "examples": [
+            "2004-01-01"
+          ]
+        }
+      },
+      "filter.date_of_birth.min": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "format": "date",
+          "examples": [
+            "1996-01-01"
+          ]
+        }
+      },
+      "filter.date_of_death.max": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "format": "date",
+          "examples": [
+            "2004-01-01"
+          ]
+        }
+      },
+      "filter.date_of_death.min": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "format": "date",
+          "examples": [
+            "1985-01-01"
+          ]
+        }
+      },
+      "filter.dimensions.hotel_class": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 5
+          },
+          "examples": [
+            4,
+            5
+          ]
+        }
+      },
+      "filter.dimensions.price_level": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 4
+          },
+          "examples": [
+            1,
+            2
+          ]
+        }
+      },
+      "filter.entities": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "filter.entities.query": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "examples": [
+            "restaurant"
+          ]
+        }
+      },
+      "filter.entity_ids": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "filter.exclude.entities": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "examples": [
+            "39458DC0-F91D-4591-80A8-E254E66F84A2,B315A4B4-6756-4CF3-8297-75FD94CC8CF2"
+          ]
+        }
+      },
+      "filter.exclude.entities.query": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "address": {
+                    "type": "string"
+                  }
+                }
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "examples": [
+            {
+              "name": "Balthazar",
+              "address": "80 Spring St, New York"
+            },
+            "Balthazar"
+          ]
+        }
+      },
+      "filter.exclude.location": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "examples": [
+            "POINT(-73.99823 40.722668)"
+          ]
+        }
+      },
+      "filter.exclude.location.geohash": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "examples": [
+            "dr5rs"
+          ]
+        }
+      },
+      "filter.exclude.location.query": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
+        }
+      },
+      "filter.exclude.location.radius": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "examples": [
+            10000
+          ]
+        }
+      },
+      "filter.exclude.tags": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "examples": [
+            "urn:tag:genre:media:mystery,urn:tag:genre:media:drama"
+          ]
+        }
+      },
+      "filter.exists": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "properties.image",
+            "properties.description"
+          ],
+          "examples": [
+            "properties.image",
+            "properties.description"
+          ]
+        }
+      },
+      "filter.external.exists": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "examples": [
+            "resy,michelin"
+          ]
+        }
+      },
+      "filter.external.resy.count.max": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 0,
+          "examples": [
+            200
+          ]
+        }
+      },
+      "filter.external.resy.count.min": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 0,
+          "examples": [
+            20
+          ]
+        }
+      },
+      "filter.external.resy.party_size.max": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 1,
+          "examples": [
+            10
+          ]
+        }
+      },
+      "filter.external.resy.party_size.min": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 1,
+          "examples": [
+            2
+          ]
+        }
+      },
+      "filter.external.resy.rating.max": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 5,
+          "examples": [
+            4.5
+          ]
+        }
+      },
+      "filter.external.resy.rating.min": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 5,
+          "examples": [
+            3.5
+          ]
+        }
+      },
+      "filter.external.tripadvisor.rating.count.max": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 0,
+          "examples": [
+            500
+          ]
+        }
+      },
+      "filter.external.tripadvisor.rating.count.min": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 0,
+          "examples": [
+            50
+          ]
+        }
+      },
+      "filter.external.tripadvisor.rating.max": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 5,
+          "examples": [
+            4
+          ]
+        }
+      },
+      "filter.external.tripadvisor.rating.min": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 5,
+          "examples": [
+            3
+          ]
+        }
+      },
+      "filter.finale_year.max": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "examples": [
+            2021
+          ]
+        }
+      },
+      "filter.finale_year.min": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "examples": [
+            2014
+          ]
+        }
+      },
+      "filter.gender": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "examples": [
+            "female"
+          ]
+        }
+      },
+      "filter.geocode.admin1_region": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "examples": [
+            "NY"
+          ]
+        }
+      },
+      "filter.geocode.admin2_region": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "examples": [
+            "New York County"
+          ]
+        }
+      },
+      "filter.geocode.country_code": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "examples": [
+            "US"
+          ]
+        }
+      },
+      "filter.geocode.name": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "examples": [
+            "New York"
+          ]
+        }
+      },
+      "filter.hotel_class.max": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5,
+          "examples": [
+            5
+          ]
+        }
+      },
+      "filter.hotel_class.min": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5,
+          "examples": [
+            3
+          ]
+        }
+      },
+      "filter.hours": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "monday",
+            "tuesday",
+            "wednesday",
+            "thursday",
+            "friday",
+            "saturday",
+            "sunday"
+          ],
+          "examples": [
+            "monday"
+          ]
+        }
+      },
+      "filter.ids": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "filter.latest_known_year.max": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {}
+      },
+      "filter.latest_known_year.min": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {}
+      },
+      "filter.location": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "filter.location.geohash": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "examples": [
+            "dr5rsjk4sr2w"
+          ]
+        }
+      },
+      "filter.location.metro": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "examples": [
+            "New York"
+          ]
+        }
+      },
+      "filter.location.query": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
+        }
+      },
+      "filter.location.radius": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "default": 15000,
+          "maximum": 800000
+        }
+      },
+      "filter.parents.types": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "urn:audience:communities",
+            "urn:audience:global_issues",
+            "urn:audience:hobbies_and_interests",
+            "urn:audience:investing_interests",
+            "urn:audience:leisure",
+            "urn:audience:life_stage",
+            "urn:audience:lifestyle_preferences_beliefs",
+            "urn:audience:political_preferences",
+            "urn:audience:professional_area",
+            "urn:audience:spending_habits"
+          ],
+          "examples": [
+            "urn:audience:communities",
+            "urn:audience:global_issues"
+          ]
+        }
+      },
+      "filter.popularity.max": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "examples": [
+            0.98
+          ]
+        }
+      },
+      "filter.popularity.min": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "examples": [
+            0.5
+          ]
+        }
+      },
+      "filter.price_level.max": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 4,
+          "examples": [
+            3
+          ]
+        }
+      },
+      "filter.price_level.min": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 4,
+          "examples": [
+            1
+          ]
+        }
+      },
+      "filter.price_range.from": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000,
+          "examples": [
+            200
+          ]
+        }
+      },
+      "filter.price_range.max": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "filter.price_range.min": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "filter.price_range.to": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000,
+          "examples": [
+            200
+          ]
+        }
+      },
+      "filter.properties.business_rating.max": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "number",
+          "format": "float",
+          "enum": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "examples": [
+            3
+          ]
+        }
+      },
+      "filter.properties.business_rating.min": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "number",
+          "format": "float",
+          "enum": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "examples": [
+            3
+          ]
+        }
+      },
+      "filter.properties.resy.rating.max": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "filter.properties.resy.rating.min": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "filter.publication_year.max": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "number",
+          "examples": [
+            2021
+          ]
+        }
+      },
+      "filter.publication_year.min": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "number",
+          "examples": [
+            1985
+          ]
+        }
+      },
+      "filter.rating.max": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 5,
+          "examples": [
+            4.5
+          ]
+        }
+      },
+      "filter.rating.min": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 5,
+          "examples": [
+            3.5
+          ]
+        }
+      },
+      "filter.references_brand": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "examples": [
+            "636E1B95-6232-43E1-BDFE-37CD209C2CE3,7D2B1DFF-9D5D-44DE-970E-46B80C76CFA6"
+          ]
+        }
+      },
+      "filter.release_country": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "examples": [
+            "United States",
+            "France"
+          ]
+        }
+      },
+      "filter.release_date.max": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "format": "date",
+          "examples": [
+            "2024-01-01"
+          ]
+        }
+      },
+      "filter.release_date.min": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "format": "date",
+          "examples": [
+            "2021-01-01"
+          ]
+        }
+      },
+      "filter.release_year.max": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "examples": [
+            2024
+          ]
+        }
+      },
+      "filter.release_year.min": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "examples": [
+            1996
+          ]
+        }
+      },
+      "filter.results.entities": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "examples": [
+            "636E1B95-6232-43E1-BDFE-37CD209C2CE3,7D2B1DFF-9D5D-44DE-970E-46B80C76CFA6"
+          ]
+        }
+      },
+      "filter.results.entities.query": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
+        }
+      },
+      "filter.results.tags": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "examples": [
+            "urn:tag:genre:place:restaurant:japanese",
+            "urn:tag:style:qloo:indie"
+          ]
+        }
+      },
+      "filter.resy.rating.party.max": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "filter.resy.rating.party.min": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "filter.resy.rating_count.max": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "filter.resy.rating_count.min": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "filter.tag.types": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "filter.tags": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "filter.type": {
+        "tier": "guide",
+        "required": true,
+        "schema": {
+          "examples": [
+            "urn:entity:book"
+          ],
+          "type": "string",
+          "enum": [
+            "urn:entity:artist",
+            "urn:entity:book",
+            "urn:entity:brand",
+            "urn:entity:locality",
+            "urn:entity:movie",
+            "urn:entity:person",
+            "urn:entity:place",
+            "urn:entity:podcast",
+            "urn:entity:tv_show",
+            "urn:entity:videogame",
+            "urn:heatmap",
+            "urn:entity:audience"
+          ],
+          "x-enum-descriptions": [
+            "Artist",
+            "Book",
+            "Brand",
+            "Locality (partially supported)",
+            "Movie",
+            "Person",
+            "Place",
+            "Podcast",
+            "TV show",
+            "Videogame",
+            "Heatmap",
+            "Audience (deprecated)"
+          ]
+        }
+      },
+      "heatmap.dimensions": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "quality",
+              "popularity",
+              "hotel_class",
+              "price_level"
+            ]
+          },
+          "examples": [
+            "quality",
+            "price_level"
+          ]
+        }
+      },
+      "offset": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "examples": [
+            5
+          ]
+        }
+      },
+      "operator.exclude.tags": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "operator.filter.exclude.tags": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "union",
+            "intersection"
+          ],
+          "examples": [
+            "union"
+          ]
+        }
+      },
+      "operator.filter.external.exists": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "union",
+            "intersection"
+          ],
+          "examples": [
+            "union"
+          ]
+        }
+      },
+      "operator.filter.references_brand": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "union",
+            "intersection"
+          ],
+          "examples": [
+            "union"
+          ]
+        }
+      },
+      "operator.filter.release_country": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "intersection",
+            "union"
+          ],
+          "examples": [
+            "union"
+          ]
+        }
+      },
+      "operator.filter.tags": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "intersection",
+            "union"
+          ],
+          "default": "union"
+        }
+      },
+      "operator.signal.interests.tags": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "union",
+            "intersection"
+          ],
+          "examples": [
+            "union"
+          ]
+        }
+      },
+      "output.heatmap.boundary": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "examples": [
+            "urn:entity:locality"
+          ]
+        }
+      },
+      "page": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "format": "int32",
+          "minimum": 1,
+          "maximum": 100,
+          "default": 1
+        }
+      },
+      "signal.demographics.age": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "35_and_younger",
+            "36_to_55",
+            "24_and_younger",
+            "25_to_29",
+            "30_to_34",
+            "35_to_44",
+            "45_to_54",
+            "55_and_older"
+          ],
+          "examples": [
+            "36_to_55"
+          ]
+        }
+      },
+      "signal.demographics.age.weight": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "oneOf": [
+            {
+              "type": "number",
+              "minimum": 0
+            },
+            {
+              "type": "string",
+              "enum": [
+                "very_low",
+                "low",
+                "mid",
+                "medium",
+                "high",
+                "very_high"
+              ]
+            }
+          ],
+          "examples": [
+            "medium"
+          ]
+        }
+      },
+      "signal.demographics.audiences": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "examples": [
+            "urn:audience:communities",
+            "urn:audience:spending_habits"
+          ]
+        }
+      },
+      "signal.demographics.audiences.weight": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "oneOf": [
+            {
+              "type": "number",
+              "minimum": 0
+            },
+            {
+              "type": "string",
+              "enum": [
+                "very_low",
+                "low",
+                "mid",
+                "medium",
+                "high",
+                "very_high"
+              ]
+            }
+          ],
+          "examples": [
+            "medium"
+          ]
+        }
+      },
+      "signal.demographics.gender": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "male",
+            "female"
+          ],
+          "examples": [
+            "male"
+          ]
+        }
+      },
+      "signal.demographics.gender.weight": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "oneOf": [
+            {
+              "type": "number",
+              "minimum": 0
+            },
+            {
+              "type": "string",
+              "enum": [
+                "very_low",
+                "low",
+                "mid",
+                "medium",
+                "high",
+                "very_high"
+              ]
+            }
+          ],
+          "examples": [
+            "medium"
+          ]
+        }
+      },
+      "signal.interests.entities": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "examples": [
+            "636E1B95-6232-43E1-BDFE-37CD209C2CE3,7D2B1DFF-9D5D-44DE-970E-46B80C76CFA6"
+          ]
+        }
+      },
+      "signal.interests.entities.include": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "examples": [
+            "E12345,E67890"
+          ]
+        }
+      },
+      "signal.interests.entities.query": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "address": {
+                    "type": "string"
+                  },
+                  "resolve_to": {
+                    "type": "string",
+                    "enum": [
+                      "place",
+                      "brand",
+                      "both"
+                    ]
+                  }
+                }
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "examples": [
+            {
+              "name": "Balthazar",
+              "address": "80 Spring St, New York"
+            },
+            "Balthazar",
+            {
+              "name": "Naya",
+              "address": "ny",
+              "resolve_to": "both"
+            }
+          ]
+        }
+      },
+      "signal.interests.entities.weight": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "oneOf": [
+            {
+              "type": "number",
+              "minimum": 0
+            },
+            {
+              "type": "string",
+              "enum": [
+                "very_low",
+                "low",
+                "mid",
+                "medium",
+                "high",
+                "very_high"
+              ]
+            }
+          ],
+          "examples": [
+            "medium"
+          ]
+        }
+      },
+      "signal.interests.tags": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "tag": {
+                    "type": "string"
+                  },
+                  "weight": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "signal.interests.tags.weight": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "oneOf": [
+            {
+              "type": "number",
+              "minimum": 0
+            },
+            {
+              "type": "string",
+              "enum": [
+                "very_low",
+                "low",
+                "mid",
+                "medium",
+                "high",
+                "very_high"
+              ]
+            }
+          ],
+          "examples": [
+            "medium"
+          ]
+        }
+      },
+      "signal.location": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "examples": [
+            "POINT(-73.99823 40.722668)"
+          ]
+        }
+      },
+      "signal.location.query": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "examples": [
+            "New York City"
+          ]
+        }
+      },
+      "signal.location.radius": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "maximum": 800000,
+          "examples": [
+            5000
+          ]
+        }
+      },
+      "signal.location.weight": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "oneOf": [
+            {
+              "type": "number",
+              "minimum": 0
+            },
+            {
+              "type": "string",
+              "enum": [
+                "very_low",
+                "low",
+                "mid",
+                "medium",
+                "high",
+                "very_high"
+              ]
+            }
+          ],
+          "examples": [
+            "medium"
+          ]
+        }
+      },
+      "sort_by": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "affinity",
+            "distance",
+            "rating",
+            "quality"
+          ],
+          "examples": [
+            "affinity"
+          ]
+        }
+      },
+      "take": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "default": 20,
+          "minimum": 1,
+          "maximum": 50,
+          "examples": [
+            10
+          ]
+        }
+      }
+    },
+    "urn:entity:podcast": {
+      "backfill.content_based.take": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10,
+          "default": 10
+        }
+      },
+      "backfill.cross_domain.take": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 20,
+          "default": 20
+        }
+      },
+      "bias.content_based": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "number",
+          "format": "integer",
+          "default": 0.5,
+          "maximum": 1,
+          "minimum": 0
+        }
+      },
+      "bias.quality": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "very_low",
+                "low",
+                "mid",
+                "medium",
+                "high",
+                "very_high"
+              ]
+            },
+            {
+              "type": "number",
+              "exclusiveMinimum": 0
+            }
+          ],
+          "examples": [
+            "high"
+          ]
+        }
+      },
+      "bias.trends": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "off",
+            "very_low",
+            "low",
+            "mid",
+            "medium",
+            "high",
+            "very_high"
+          ],
+          "default": "medium"
+        }
+      },
+      "diversify.by": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "properties.geocode.city",
+            "properties.geocode.metro",
+            "subtype"
+          ],
+          "examples": [
+            "properties.geocode.city",
+            "properties.geocode.metro",
+            "subtype"
+          ]
+        }
+      },
+      "diversify.take": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 1,
+          "examples": [
+            5
+          ]
+        }
+      },
+      "feature.explainability": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "boolean",
+          "examples": [
+            true
+          ]
+        }
+      },
+      "filter.address": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "filter.audience.types": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "filter.content_rating": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "G",
+            "PG",
+            "PG-13",
+            "R",
+            "NC-17",
+            "TV-G",
+            "TV-PG",
+            "TV-14",
+            "TV-MA",
+            "TV-Y",
+            "TV-Y7",
+            "TV-Y7-FV",
+            "Not Rated",
+            "Unrated",
+            "Approved",
+            "Passed",
+            "X",
+            "GP",
+            "M",
+            "13+",
+            "16+",
+            "18+"
+          ],
+          "examples": [
+            "PG-13",
+            "TV-MA",
+            "R,TV-14"
+          ]
+        }
+      },
+      "filter.date_of_birth.max": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "format": "date",
+          "examples": [
+            "2004-01-01"
+          ]
+        }
+      },
+      "filter.date_of_birth.min": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "format": "date",
+          "examples": [
+            "1996-01-01"
+          ]
+        }
+      },
+      "filter.date_of_death.max": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "format": "date",
+          "examples": [
+            "2004-01-01"
+          ]
+        }
+      },
+      "filter.date_of_death.min": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "format": "date",
+          "examples": [
+            "1985-01-01"
+          ]
+        }
+      },
+      "filter.dimensions.hotel_class": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 5
+          },
+          "examples": [
+            4,
+            5
+          ]
+        }
+      },
+      "filter.dimensions.price_level": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 4
+          },
+          "examples": [
+            1,
+            2
+          ]
+        }
+      },
+      "filter.entities": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "filter.entities.query": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "examples": [
+            "restaurant"
+          ]
+        }
+      },
+      "filter.entity_ids": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "filter.exclude.entities": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "examples": [
+            "39458DC0-F91D-4591-80A8-E254E66F84A2,B315A4B4-6756-4CF3-8297-75FD94CC8CF2"
+          ]
+        }
+      },
+      "filter.exclude.entities.query": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "address": {
+                    "type": "string"
+                  }
+                }
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "examples": [
+            {
+              "name": "Balthazar",
+              "address": "80 Spring St, New York"
+            },
+            "Balthazar"
+          ]
+        }
+      },
+      "filter.exclude.location": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "examples": [
+            "POINT(-73.99823 40.722668)"
+          ]
+        }
+      },
+      "filter.exclude.location.geohash": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "examples": [
+            "dr5rs"
+          ]
+        }
+      },
+      "filter.exclude.location.query": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
+        }
+      },
+      "filter.exclude.location.radius": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "examples": [
+            10000
+          ]
+        }
+      },
+      "filter.exclude.tags": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "examples": [
+            "urn:tag:genre:media:mystery,urn:tag:genre:media:drama"
+          ]
+        }
+      },
+      "filter.exists": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "properties.image",
+            "properties.description"
+          ],
+          "examples": [
+            "properties.image",
+            "properties.description"
+          ]
+        }
+      },
+      "filter.external.exists": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "examples": [
+            "resy,michelin"
+          ]
+        }
+      },
+      "filter.external.resy.count.max": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 0,
+          "examples": [
+            200
+          ]
+        }
+      },
+      "filter.external.resy.count.min": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 0,
+          "examples": [
+            20
+          ]
+        }
+      },
+      "filter.external.resy.party_size.max": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 1,
+          "examples": [
+            10
+          ]
+        }
+      },
+      "filter.external.resy.party_size.min": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 1,
+          "examples": [
+            2
+          ]
+        }
+      },
+      "filter.external.resy.rating.max": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 5,
+          "examples": [
+            4.5
+          ]
+        }
+      },
+      "filter.external.resy.rating.min": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 5,
+          "examples": [
+            3.5
+          ]
+        }
+      },
+      "filter.external.tripadvisor.rating.count.max": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 0,
+          "examples": [
+            500
+          ]
+        }
+      },
+      "filter.external.tripadvisor.rating.count.min": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 0,
+          "examples": [
+            50
+          ]
+        }
+      },
+      "filter.external.tripadvisor.rating.max": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 5,
+          "examples": [
+            4
+          ]
+        }
+      },
+      "filter.external.tripadvisor.rating.min": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 5,
+          "examples": [
+            3
+          ]
+        }
+      },
+      "filter.finale_year.max": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "examples": [
+            2021
+          ]
+        }
+      },
+      "filter.finale_year.min": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "examples": [
+            2014
+          ]
+        }
+      },
+      "filter.gender": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "examples": [
+            "female"
+          ]
+        }
+      },
+      "filter.geocode.admin1_region": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "examples": [
+            "NY"
+          ]
+        }
+      },
+      "filter.geocode.admin2_region": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "examples": [
+            "New York County"
+          ]
+        }
+      },
+      "filter.geocode.country_code": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "examples": [
+            "US"
+          ]
+        }
+      },
+      "filter.geocode.name": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "examples": [
+            "New York"
+          ]
+        }
+      },
+      "filter.hotel_class.max": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5,
+          "examples": [
+            5
+          ]
+        }
+      },
+      "filter.hotel_class.min": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5,
+          "examples": [
+            3
+          ]
+        }
+      },
+      "filter.hours": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "monday",
+            "tuesday",
+            "wednesday",
+            "thursday",
+            "friday",
+            "saturday",
+            "sunday"
+          ],
+          "examples": [
+            "monday"
+          ]
+        }
+      },
+      "filter.ids": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "filter.latest_known_year.max": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {}
+      },
+      "filter.latest_known_year.min": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {}
+      },
+      "filter.location": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "filter.location.geohash": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "examples": [
+            "dr5rsjk4sr2w"
+          ]
+        }
+      },
+      "filter.location.metro": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "examples": [
+            "New York"
+          ]
+        }
+      },
+      "filter.location.query": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
+        }
+      },
+      "filter.location.radius": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "default": 15000,
+          "maximum": 800000
+        }
+      },
+      "filter.parents.types": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "urn:audience:communities",
+            "urn:audience:global_issues",
+            "urn:audience:hobbies_and_interests",
+            "urn:audience:investing_interests",
+            "urn:audience:leisure",
+            "urn:audience:life_stage",
+            "urn:audience:lifestyle_preferences_beliefs",
+            "urn:audience:political_preferences",
+            "urn:audience:professional_area",
+            "urn:audience:spending_habits"
+          ],
+          "examples": [
+            "urn:audience:communities",
+            "urn:audience:global_issues"
+          ]
+        }
+      },
+      "filter.popularity.max": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "examples": [
+            0.98
+          ]
+        }
+      },
+      "filter.popularity.min": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "examples": [
+            0.5
+          ]
+        }
+      },
+      "filter.price_level.max": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 4,
+          "examples": [
+            3
+          ]
+        }
+      },
+      "filter.price_level.min": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 4,
+          "examples": [
+            1
+          ]
+        }
+      },
+      "filter.price_range.from": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000,
+          "examples": [
+            200
+          ]
+        }
+      },
+      "filter.price_range.max": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "filter.price_range.min": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "filter.price_range.to": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000,
+          "examples": [
+            200
+          ]
+        }
+      },
+      "filter.properties.business_rating.max": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "number",
+          "format": "float",
+          "enum": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "examples": [
+            3
+          ]
+        }
+      },
+      "filter.properties.business_rating.min": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "number",
+          "format": "float",
+          "enum": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "examples": [
+            3
+          ]
+        }
+      },
+      "filter.publication_year.max": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "number",
+          "examples": [
+            2021
+          ]
+        }
+      },
+      "filter.publication_year.min": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "number",
+          "examples": [
+            1985
+          ]
+        }
+      },
+      "filter.rating.max": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 5,
+          "examples": [
+            4.5
+          ]
+        }
+      },
+      "filter.rating.min": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 5,
+          "examples": [
+            3.5
+          ]
+        }
+      },
+      "filter.references_brand": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "examples": [
+            "636E1B95-6232-43E1-BDFE-37CD209C2CE3,7D2B1DFF-9D5D-44DE-970E-46B80C76CFA6"
+          ]
+        }
+      },
+      "filter.release_country": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "examples": [
+            "United States",
+            "France"
+          ]
+        }
+      },
+      "filter.release_date.max": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "format": "date",
+          "examples": [
+            "2024-01-01"
+          ]
+        }
+      },
+      "filter.release_date.min": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "format": "date",
+          "examples": [
+            "2021-01-01"
+          ]
+        }
+      },
+      "filter.release_year.max": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "examples": [
+            2024
+          ]
+        }
+      },
+      "filter.release_year.min": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "examples": [
+            1996
+          ]
+        }
+      },
+      "filter.results.entities": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "examples": [
+            "636E1B95-6232-43E1-BDFE-37CD209C2CE3,7D2B1DFF-9D5D-44DE-970E-46B80C76CFA6"
+          ]
+        }
+      },
+      "filter.results.entities.query": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
+        }
+      },
+      "filter.results.tags": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "examples": [
+            "urn:tag:genre:place:restaurant:japanese",
+            "urn:tag:style:qloo:indie"
+          ]
+        }
+      },
+      "filter.tag.types": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "filter.tags": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "filter.type": {
+        "tier": "guide",
+        "required": true,
+        "schema": {
+          "examples": [
+            "urn:entity:book"
+          ],
+          "type": "string",
+          "enum": [
+            "urn:entity:artist",
+            "urn:entity:book",
+            "urn:entity:brand",
+            "urn:entity:locality",
+            "urn:entity:movie",
+            "urn:entity:person",
+            "urn:entity:place",
+            "urn:entity:podcast",
+            "urn:entity:tv_show",
+            "urn:entity:videogame",
+            "urn:heatmap",
+            "urn:entity:audience"
+          ],
+          "x-enum-descriptions": [
+            "Artist",
+            "Book",
+            "Brand",
+            "Locality (partially supported)",
+            "Movie",
+            "Person",
+            "Place",
+            "Podcast",
+            "TV show",
+            "Videogame",
+            "Heatmap",
+            "Audience (deprecated)"
+          ]
+        }
+      },
+      "heatmap.dimensions": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "quality",
+              "popularity",
+              "hotel_class",
+              "price_level"
+            ]
+          },
+          "examples": [
+            "quality",
+            "price_level"
+          ]
+        }
+      },
+      "offset": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "examples": [
+            5
+          ]
+        }
+      },
+      "operator.exclude.tags": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "operator.filter.exclude.tags": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "union",
+            "intersection"
+          ],
+          "examples": [
+            "union"
+          ]
+        }
+      },
+      "operator.filter.external.exists": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "union",
+            "intersection"
+          ],
+          "examples": [
+            "union"
+          ]
+        }
+      },
+      "operator.filter.references_brand": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "union",
+            "intersection"
+          ],
+          "examples": [
+            "union"
+          ]
+        }
+      },
+      "operator.filter.release_country": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "intersection",
+            "union"
+          ],
+          "examples": [
+            "union"
+          ]
+        }
+      },
+      "operator.filter.tags": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "intersection",
+            "union"
+          ],
+          "default": "union"
+        }
+      },
+      "operator.signal.interests.tags": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "union",
+            "intersection"
+          ],
+          "examples": [
+            "union"
+          ]
+        }
+      },
+      "output.heatmap.boundary": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "examples": [
+            "urn:entity:locality"
+          ]
+        }
+      },
+      "page": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "format": "int32",
+          "minimum": 1,
+          "maximum": 100,
+          "default": 1
+        }
+      },
+      "signal.demographics.age": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "35_and_younger",
+            "36_to_55",
+            "24_and_younger",
+            "25_to_29",
+            "30_to_34",
+            "35_to_44",
+            "45_to_54",
+            "55_and_older"
+          ],
+          "examples": [
+            "36_to_55"
+          ]
+        }
+      },
+      "signal.demographics.age.weight": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "oneOf": [
+            {
+              "type": "number",
+              "minimum": 0
+            },
+            {
+              "type": "string",
+              "enum": [
+                "very_low",
+                "low",
+                "mid",
+                "medium",
+                "high",
+                "very_high"
+              ]
+            }
+          ],
+          "examples": [
+            "medium"
+          ]
+        }
+      },
+      "signal.demographics.audiences": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "examples": [
+            "urn:audience:communities",
+            "urn:audience:spending_habits"
+          ]
+        }
+      },
+      "signal.demographics.audiences.weight": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "oneOf": [
+            {
+              "type": "number",
+              "minimum": 0
+            },
+            {
+              "type": "string",
+              "enum": [
+                "very_low",
+                "low",
+                "mid",
+                "medium",
+                "high",
+                "very_high"
+              ]
+            }
+          ],
+          "examples": [
+            "medium"
+          ]
+        }
+      },
+      "signal.demographics.gender": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "male",
+            "female"
+          ],
+          "examples": [
+            "male"
+          ]
+        }
+      },
+      "signal.demographics.gender.weight": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "oneOf": [
+            {
+              "type": "number",
+              "minimum": 0
+            },
+            {
+              "type": "string",
+              "enum": [
+                "very_low",
+                "low",
+                "mid",
+                "medium",
+                "high",
+                "very_high"
+              ]
+            }
+          ],
+          "examples": [
+            "medium"
+          ]
+        }
+      },
+      "signal.interests.entities": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "examples": [
+            "636E1B95-6232-43E1-BDFE-37CD209C2CE3,7D2B1DFF-9D5D-44DE-970E-46B80C76CFA6"
+          ]
+        }
+      },
+      "signal.interests.entities.include": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "examples": [
+            "E12345,E67890"
+          ]
+        }
+      },
+      "signal.interests.entities.query": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "address": {
+                    "type": "string"
+                  },
+                  "resolve_to": {
+                    "type": "string",
+                    "enum": [
+                      "place",
+                      "brand",
+                      "both"
+                    ]
+                  }
+                }
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "examples": [
+            {
+              "name": "Balthazar",
+              "address": "80 Spring St, New York"
+            },
+            "Balthazar",
+            {
+              "name": "Naya",
+              "address": "ny",
+              "resolve_to": "both"
+            }
+          ]
+        }
+      },
+      "signal.interests.entities.weight": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "oneOf": [
+            {
+              "type": "number",
+              "minimum": 0
+            },
+            {
+              "type": "string",
+              "enum": [
+                "very_low",
+                "low",
+                "mid",
+                "medium",
+                "high",
+                "very_high"
+              ]
+            }
+          ],
+          "examples": [
+            "medium"
+          ]
+        }
+      },
+      "signal.interests.tags": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "tag": {
+                    "type": "string"
+                  },
+                  "weight": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "signal.interests.tags.weight": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "oneOf": [
+            {
+              "type": "number",
+              "minimum": 0
+            },
+            {
+              "type": "string",
+              "enum": [
+                "very_low",
+                "low",
+                "mid",
+                "medium",
+                "high",
+                "very_high"
+              ]
+            }
+          ],
+          "examples": [
+            "medium"
+          ]
+        }
+      },
+      "signal.location": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "examples": [
+            "POINT(-73.99823 40.722668)"
+          ]
+        }
+      },
+      "signal.location.query": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "examples": [
+            "New York City"
+          ]
+        }
+      },
+      "signal.location.radius": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "maximum": 800000,
+          "examples": [
+            5000
+          ]
+        }
+      },
+      "signal.location.weight": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "oneOf": [
+            {
+              "type": "number",
+              "minimum": 0
+            },
+            {
+              "type": "string",
+              "enum": [
+                "very_low",
+                "low",
+                "mid",
+                "medium",
+                "high",
+                "very_high"
+              ]
+            }
+          ],
+          "examples": [
+            "medium"
+          ]
+        }
+      },
+      "sort_by": {
+        "tier": "reference_only",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "affinity",
+            "distance",
+            "rating",
+            "quality"
+          ],
+          "examples": [
+            "affinity"
+          ]
+        }
+      },
+      "take": {
+        "tier": "guide",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "default": 20,
+          "minimum": 1,
+          "maximum": 50,
+          "examples": [
+            10
+          ]
+        }
+      }
+    }
+  },
+  "search": {
+    "filter.address": {
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "filter.exists": {
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "pattern": "^external\\.\\w+$"
+        }
+      }
+    },
+    "filter.location": {
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "string"
+      }
+    },
+    "filter.popularity": {
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "number",
+        "format": "double",
+        "minimum": 0,
+        "maximum": 1
+      }
+    },
+    "filter.radius": {
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "number",
+        "format": "float",
+        "default": 10,
+        "maximum": 100,
+        "minimum": 0
+      }
+    },
+    "filter.rating": {
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "number",
+        "format": "double",
+        "minimum": 0,
+        "maximum": 5
+      }
+    },
+    "filter.tags": {
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "operator.filter.tags": {
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "enum": [
+          "intersection",
+          "union"
+        ],
+        "default": "union"
+      }
+    },
+    "page": {
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "format": "int32",
+        "minimum": 1,
+        "maximum": 100,
+        "default": 1
+      }
+    },
+    "query": {
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "string"
+      }
+    },
+    "sort_by": {
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "default": "match",
+        "enum": [
+          "match",
+          "distance",
+          "popularity"
+        ]
+      }
+    },
+    "take": {
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "exclusiveMaximum": 200
+      }
+    },
+    "types": {
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "enum": [
+            "urn:entity:artist",
+            "urn:entity:book",
+            "urn:entity:brand",
+            "urn:entity:locality",
+            "urn:entity:movie",
+            "urn:entity:person",
+            "urn:entity:place",
+            "urn:entity:podcast",
+            "urn:entity:tv_show",
+            "urn:entity:videogame",
+            "urn:heatmap",
+            "urn:entity:audience"
+          ],
+          "x-enum-descriptions": [
+            "Artist",
+            "Book",
+            "Brand",
+            "Locality (partially supported)",
+            "Movie",
+            "Person",
+            "Place",
+            "Podcast",
+            "TV show",
+            "Videogame",
+            "Heatmap",
+            "Audience (deprecated)"
+          ],
+          "examples": [
+            {
+              "summary": "Artist type",
+              "value": "urn:entity:artist"
+            },
+            {
+              "summary": "TV show type",
+              "value": "urn:entity:tv_show"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "tags": {
+    "feature.semantic_search": {
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "boolean",
+        "default": false
+      }
+    },
+    "feature.typo_tolerance": {
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "boolean",
+        "default": false,
+        "examples": [
+          true
+        ]
+      }
+    },
+    "filter.parents.types": {
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "enum": [
+          "urn:audience:communities",
+          "urn:audience:global_issues",
+          "urn:audience:hobbies_and_interests",
+          "urn:audience:investing_interests",
+          "urn:audience:leisure",
+          "urn:audience:life_stage",
+          "urn:audience:lifestyle_preferences_beliefs",
+          "urn:audience:political_preferences",
+          "urn:audience:professional_area",
+          "urn:audience:spending_habits"
+        ],
+        "examples": [
+          "urn:audience:communities",
+          "urn:audience:global_issues"
+        ]
+      }
+    },
+    "filter.popularity.max": {
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1,
+        "examples": [
+          0.98
+        ]
+      }
+    },
+    "filter.popularity.min": {
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1,
+        "examples": [
+          0.5
+        ]
+      }
+    },
+    "filter.query": {
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "vegan"
+        ]
+      }
+    },
+    "filter.results.tags": {
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "examples": [
+          "urn:tag:genre:place:restaurant:japanese",
+          "urn:tag:style:qloo:indie"
+        ]
+      }
+    },
+    "filter.tag.types": {
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "examples": [
+          "urn:tag:accessibility:place",
+          "urn:tag:ambience:qloo",
+          "urn:tag:amenity:place",
+          "urn:tag:category:place"
+        ]
+      }
+    },
+    "page": {
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "format": "int32",
+        "minimum": 1,
+        "maximum": 100,
+        "default": 1
+      }
+    },
+    "take": {
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "default": 20,
+        "minimum": 1,
+        "maximum": 50,
+        "examples": [
+          10
+        ]
+      }
+    }
+  },
+  "sources": [
+    {
+      "file": "fixtures/param-schema/definitions.json",
+      "sha256": "73eb7e4f10007275b913a31e6e91dca9d6aed6f44eb12f8578be36509f4f5688",
+      "upstreamUrls": [
+        "https://docs.qloo.com/reference/available-parameters-by-entity-type",
+        "https://docs.qloo.com/reference/parameters",
+        "https://docs.qloo.com/reference/insights-api-deep-dive",
+        "https://docs.qloo.com/reference/get-search",
+        "https://docs.qloo.com/reference/search-tags"
+      ]
+    }
+  ]
+}

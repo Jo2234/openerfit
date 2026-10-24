@@ -1,0 +1,43 @@
+# Documentary free-provider recommendations; not yet verified by a live call.
+# Primary Groq: LLM_MODE=openai-compatible, LLM_BASE_URL=https://api.groq.com/openai/v1,
+# LLM_MODEL=qwen/qwen3.8-27b, LLM_REASONING_EFFORT=none, LLM_SUPPORTS_SEED=1,
+# LLM_PLANNER_MAX_TOKENS=1024, LLM_WRITER_MAX_TOKENS=2048, LLM_BASELINE_MAX_TOKENS=4096.
+# Fallback Gemini: LLM_MODE=openai-compatible,
+# LLM_BASE_URL=https://generativelanguage.googleapis.com/v1beta/openai,
+# LLM_MODEL=gemini-3.8-flash, LLM_REASONING_EFFORT=minimal, LLM_SUPPORTS_SEED=0,
+# LLM_PLANNER_MAX_TOKENS=4096, LLM_WRITER_MAX_TOKENS=4096, LLM_BASELINE_MAX_TOKENS=4096.
+services:
+  - type: web
+    name: openerfit
+    runtime: docker
+    plan: free
+    healthCheckPath: /api/health
+    envVars:
+      - key: QLOO_MODE
+        value: live
+      - key: QLOO_API_KEY
+        sync: false
+      # Template writing works without an LLM; opt in using the variables below.
+      - key: LLM_MODE
+        value: none
+      # For openai-compatible mode, supply the provider's base URL and model.
+      - key: LLM_BASE_URL
+        sync: false
+      - key: LLM_MODEL
+        sync: false
+      - key: LLM_API_KEY
+        sync: false
+      - key: LLM_SUPPORTS_SEED
+        sync: false
+      - key: LLM_REASONING_EFFORT
+        sync: false
+      - key: LLM_PLANNER_MAX_TOKENS
+        sync: false
+      - key: LLM_WRITER_MAX_TOKENS
+        sync: false
+      - key: LLM_BASELINE_MAX_TOKENS
+        sync: false
+      - key: TRUST_PROXY
+        value: "1"
+      - key: QLOO_CACHE_DIR
+        value: /tmp/qloo-cache

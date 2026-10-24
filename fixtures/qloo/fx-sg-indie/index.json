@@ -1,0 +1,121 @@
+{
+  "scenario": "fx-sg-indie",
+  "synthetic": true,
+  "label": "synthetic fixture fx-sg-indie (hand-written)",
+  "entries": [
+    {
+      "endpoint": "/search",
+      "canonicalQuery": "query=Harbour+Lights&take=5&types=urn%3Aentity%3Aartist",
+      "file": "search-0.json",
+      "status": 200
+    },
+    {
+      "endpoint": "/search",
+      "canonicalQuery": "query=Saltwater+Static&take=5&types=urn%3Aentity%3Aartist",
+      "file": "search-1.json",
+      "status": 200
+    },
+    {
+      "endpoint": "/search",
+      "canonicalQuery": "query=Moth+Parade&take=5&types=urn%3Aentity%3Aartist",
+      "file": "search-2.json",
+      "status": 200
+    },
+    {
+      "endpoint": "/search",
+      "canonicalQuery": "query=Kopi+Noir&take=5&types=urn%3Aentity%3Aartist",
+      "file": "search-3.json",
+      "status": 200
+    },
+    {
+      "endpoint": "/search",
+      "canonicalQuery": "query=Paper+Lantern+Club&take=5&types=urn%3Aentity%3Aartist",
+      "file": "search-4.json",
+      "status": 200
+    },
+    {
+      "endpoint": "/search",
+      "canonicalQuery": "query=Lantern+Choir&take=5&types=urn%3Aentity%3Aartist",
+      "file": "search-5.json",
+      "status": 200
+    },
+    {
+      "endpoint": "/search",
+      "canonicalQuery": "query=Neon+Durian&take=5&types=urn%3Aentity%3Aartist",
+      "file": "search-6.json",
+      "status": 200
+    },
+    {
+      "endpoint": "/search",
+      "canonicalQuery": "query=Velvet+Monsoon&take=5&types=urn%3Aentity%3Aartist",
+      "file": "search-7.json",
+      "status": 200
+    },
+    {
+      "endpoint": "/search",
+      "canonicalQuery": "query=Echo+Park+Ferry&take=5&types=urn%3Aentity%3Aartist",
+      "file": "search-8.json",
+      "status": 200
+    },
+    {
+      "endpoint": "/v2/insights",
+      "canonicalQuery": "filter.results.entities=fx-art-ss%2Cfx-art-mp1%2Cfx-art-kn%2Cfx-art-plc%2Cfx-art-lc%2Cfx-art-nd%2Cfx-art-vm&filter.type=urn%3Aentity%3Aartist&signal.interests.entities=fx-art-hl&take=7",
+      "file": "ranking.json",
+      "status": 200
+    },
+    {
+      "endpoint": "/v2/insights",
+      "canonicalQuery": "filter.type=urn%3Aentity%3Abrand&signal.interests.entities=fx-art-hl&take=8",
+      "file": "brand.json",
+      "status": 200
+    },
+    {
+      "endpoint": "/v2/insights",
+      "canonicalQuery": "filter.exclude.entities=fx-art-hl%2Cfx-art-ss%2Cfx-art-mp1%2Cfx-art-kn%2Cfx-art-plc%2Cfx-art-lc%2Cfx-art-nd%2Cfx-art-vm&filter.type=urn%3Aentity%3Abrand&signal.interests.entities=fx-art-hl&take=8",
+      "file": "brand-excluded.json",
+      "status": 200
+    },
+    {
+      "endpoint": "/v2/insights",
+      "canonicalQuery": "filter.location=POINT%28103.855+1.3%29&filter.location.radius=3000&filter.type=urn%3Aentity%3Aplace&signal.interests.entities=fx-art-hl&take=8",
+      "file": "place.json",
+      "status": 200
+    },
+    {
+      "endpoint": "/v2/insights",
+      "canonicalQuery": "filter.exclude.entities=fx-art-hl%2Cfx-art-ss%2Cfx-art-mp1%2Cfx-art-kn%2Cfx-art-plc%2Cfx-art-lc%2Cfx-art-nd%2Cfx-art-vm&filter.location=POINT%28103.855+1.3%29&filter.location.radius=3000&filter.type=urn%3Aentity%3Aplace&signal.interests.entities=fx-art-hl&take=8",
+      "file": "place-excluded.json",
+      "status": 200
+    },
+    {
+      "endpoint": "/v2/insights",
+      "canonicalQuery": "filter.location=POINT%28103.855+1.3%29&filter.location.radius=3000&filter.tags=urn%3Atag%3Afixture%3Aplace%3Acraft_beer&filter.type=urn%3Aentity%3Aplace&signal.interests.entities=fx-art-hl&take=8",
+      "file": "place-tagged.json",
+      "status": 200
+    },
+    {
+      "endpoint": "/v2/insights",
+      "canonicalQuery": "filter.exclude.entities=fx-art-hl%2Cfx-art-ss%2Cfx-art-mp1%2Cfx-art-kn%2Cfx-art-plc%2Cfx-art-lc%2Cfx-art-nd%2Cfx-art-vm&filter.location=POINT%28103.855+1.3%29&filter.location.radius=3000&filter.tags=urn%3Atag%3Afixture%3Aplace%3Acraft_beer&filter.type=urn%3Aentity%3Aplace&signal.interests.entities=fx-art-hl&take=8",
+      "file": "place-tagged-excluded.json",
+      "status": 200
+    },
+    {
+      "endpoint": "/v2/insights",
+      "canonicalQuery": "filter.type=urn%3Aentity%3Apodcast&signal.interests.entities=fx-art-hl&take=8",
+      "file": "podcast.json",
+      "status": 200
+    },
+    {
+      "endpoint": "/v2/insights",
+      "canonicalQuery": "filter.exclude.entities=fx-art-hl%2Cfx-art-ss%2Cfx-art-mp1%2Cfx-art-kn%2Cfx-art-plc%2Cfx-art-lc%2Cfx-art-nd%2Cfx-art-vm&filter.type=urn%3Aentity%3Apodcast&signal.interests.entities=fx-art-hl&take=8",
+      "file": "podcast-excluded.json",
+      "status": 200
+    },
+    {
+      "endpoint": "/v2/tags",
+      "canonicalQuery": "filter.query=craft+beer&take=10",
+      "file": "tags.json",
+      "status": 200
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+node_modules/
+dist/
+.cache/
+# Qloo response data must never be committed (developer guide FAQ: no Qloo data in public repos)
+qloo-cache/
+recorded/
+.env
+.env.*
+!.env.example
+playwright-report/
+test-results/
+*.log
+*.gguf
+*.tar.gz
+.DS_Store

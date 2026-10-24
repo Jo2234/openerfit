@@ -1,0 +1,13 @@
+{
+  "results": {
+    "entities": [
+      {
+        "entity_id": "fx-edge-place",
+        "name": "Coordinate Free Cafe",
+        "query": {
+          "affinity": 0.6
+        }
+      }
+    ]
+  }
+}

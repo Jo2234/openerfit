@@ -1,0 +1,16 @@
+{
+  "results": [
+    {
+      "entity_id": "fx-art-mp1",
+      "name": "Moth Parade",
+      "subtype": "urn:entity:artist",
+      "disambiguation": "2019, Singapore indie"
+    },
+    {
+      "entity_id": "fx-art-mp2",
+      "name": "Moth Parade",
+      "subtype": "urn:entity:artist",
+      "disambiguation": "2008, US hardcore"
+    }
+  ]
+}

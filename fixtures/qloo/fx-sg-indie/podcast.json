@@ -1,0 +1,30 @@
+{
+  "results": {
+    "entities": [
+      {
+        "entity_id": "fx-podcast-0",
+        "name": "Small Rooms Big Sound",
+        "subtype": "urn:entity:podcast",
+        "query": {
+          "affinity": 0.8603
+        }
+      },
+      {
+        "entity_id": "fx-podcast-1",
+        "name": "Night Bus Radio",
+        "subtype": "urn:entity:podcast",
+        "query": {
+          "affinity": 0.815
+        }
+      },
+      {
+        "entity_id": "fx-podcast-2",
+        "name": "B-Side Kitchen",
+        "subtype": "urn:entity:podcast",
+        "query": {
+          "affinity": 0.7322
+        }
+      }
+    ]
+  }
+}

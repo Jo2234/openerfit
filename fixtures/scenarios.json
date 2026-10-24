@@ -1,0 +1,181 @@
+[
+  {
+    "id": "fx-sg-indie",
+    "title": "Singapore indie night (fictional)",
+    "synthetic": true,
+    "liveSafe": false,
+    "request": {
+      "headlinerQuery": "Harbour Lights",
+      "venue": {
+        "name": "The Tin Shed (fictional)",
+        "city": "Singapore",
+        "lat": 1.3,
+        "lon": 103.855,
+        "radiusM": 3000,
+        "capacity": 400
+      },
+      "budget": {
+        "perOpenerMax": 1500,
+        "currency": "SGD"
+      },
+      "showDate": "2026-11-21",
+      "roster": [
+        {
+          "rowId": "r1",
+          "name": "Saltwater Static",
+          "feeAmount": 1200,
+          "bookability": "available",
+          "notes": ""
+        },
+        {
+          "rowId": "r2",
+          "name": "Moth Parade",
+          "feeAmount": 900,
+          "bookability": "available",
+          "notes": ""
+        },
+        {
+          "rowId": "r3",
+          "name": "Kopi Noir",
+          "feeAmount": 1800,
+          "bookability": "available",
+          "notes": ""
+        },
+        {
+          "rowId": "r4",
+          "name": "Paper Lantern Club",
+          "feeAmount": 1000,
+          "bookability": "unavailable",
+          "notes": ""
+        },
+        {
+          "rowId": "r5",
+          "name": "Lantern Choir",
+          "feeAmount": 700,
+          "bookability": "unknown",
+          "notes": ""
+        },
+        {
+          "rowId": "r6",
+          "name": "Neon Durian",
+          "feeAmount": 1100,
+          "bookability": "available",
+          "notes": ""
+        },
+        {
+          "rowId": "r7",
+          "name": "Velvet Monsoon",
+          "feeAmount": null,
+          "bookability": "available",
+          "notes": ""
+        },
+        {
+          "rowId": "r8",
+          "name": "Echo Park Ferry",
+          "feeAmount": 800,
+          "bookability": "available",
+          "notes": ""
+        }
+      ],
+      "goal": "Indie-rock night; we want a craft beer partner and a podcast for co-promotion",
+      "partnerCategories": [
+        "brand",
+        "place",
+        "podcast"
+      ]
+    },
+    "demoSelections": {
+      "r2": "fx-art-mp1",
+      "r7": "fx-art-vm"
+    },
+    "confirmedRosterIds": [
+      "fx-art-ss",
+      "fx-art-mp1",
+      "fx-art-kn",
+      "fx-art-plc",
+      "fx-art-lc",
+      "fx-art-nd",
+      "fx-art-vm"
+    ]
+  },
+  {
+    "id": "live-sg-indie-example",
+    "title": "Singapore indie night — real artist names, fictional venue & fees",
+    "synthetic": false,
+    "liveSafe": true,
+    "request": {
+      "headlinerQuery": "Phoebe Bridgers",
+      "venue": {
+        "name": "The Tin Shed (fictional)",
+        "city": "Singapore",
+        "lat": 1.3,
+        "lon": 103.855,
+        "radiusM": 3000,
+        "capacity": 400
+      },
+      "budget": {
+        "perOpenerMax": 1500,
+        "currency": "SGD"
+      },
+      "showDate": "2026-11-21",
+      "roster": [
+        {
+          "rowId": "r1",
+          "name": "Lucy Dacus",
+          "feeAmount": 900,
+          "bookability": "unknown",
+          "notes": "Fictional fee; availability unverified."
+        },
+        {
+          "rowId": "r2",
+          "name": "Julien Baker",
+          "feeAmount": 1000,
+          "bookability": "unknown",
+          "notes": "Fictional fee; availability unverified."
+        },
+        {
+          "rowId": "r3",
+          "name": "Soccer Mommy",
+          "feeAmount": 1100,
+          "bookability": "unknown",
+          "notes": "Fictional fee; availability unverified."
+        },
+        {
+          "rowId": "r4",
+          "name": "Snail Mail",
+          "feeAmount": 1200,
+          "bookability": "unknown",
+          "notes": "Fictional fee; availability unverified."
+        },
+        {
+          "rowId": "r5",
+          "name": "Faye Webster",
+          "feeAmount": 1300,
+          "bookability": "unknown",
+          "notes": "Fictional fee; availability unverified."
+        },
+        {
+          "rowId": "r6",
+          "name": "Big Thief",
+          "feeAmount": 1400,
+          "bookability": "unknown",
+          "notes": "Fictional fee; availability unverified."
+        },
+        {
+          "rowId": "r7",
+          "name": "Low",
+          "feeAmount": 1500,
+          "bookability": "unknown",
+          "notes": "Fictional fee; availability unverified."
+        }
+      ],
+      "goal": "Indie-rock night; we want a craft beer partner and a podcast for co-promotion. Venue, budget and fees are fictional planning inputs.",
+      "partnerCategories": [
+        "brand",
+        "place",
+        "podcast"
+      ]
+    },
+    "confirmedRosterIds": []
+  }
+]

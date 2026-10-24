@@ -1,0 +1,45 @@
+{
+  "name": "openerfit",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "packageManager": "pnpm@12.11.2",
+  "scripts": {
+    "dev": "concurrently -k \"tsx watch src/server/main.ts\" \"vite\"",
+    "dev:fixture": "QLOO_MODE=fixture LLM_MODE=fixture pnpm dev",
+    "build": "vite build && tsc --noEmit",
+    "start": "NODE_ENV=production tsx src/server/main.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run --maxWorkers=1 --no-file-parallelism",
+    "test:one": "vitest run",
+    "test:e2e": "playwright test",
+    "params:extract": "tsx scripts/extract-param-schema.ts",
+    "check:env": "tsx scripts/check-env.ts",
+    "licenses": "pnpm licenses list --json"
+  },
+  "dependencies": {
+    "@hono/node-server": "1.19.17",
+    "hono": "4.13.13",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.64.1",
+    "@types/node": "24.19.2",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@vitejs/plugin-react": "5.2.0",
+    "concurrently": "9.2.5",
+    "fast-check": "4.10.2",
+    "tsx": "4.23.15",
+    "typescript": "6.0.3",
+    "vite": "7.3.7",
+    "vitest": "4.1.12",
+    "@testing-library/react": "16.3.3",
+    "jsdom": "27.4.0"
+  }
+}

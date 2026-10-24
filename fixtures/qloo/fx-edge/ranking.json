@@ -1,0 +1,60 @@
+{
+  "results": {
+    "entities": [
+      {
+        "entity_id": "fx-edge-outside",
+        "name": "Outside Fiction",
+        "query": {
+          "affinity": 0.99
+        }
+      },
+      {
+        "entity_id": "fx-edge-a",
+        "name": "Edge Amber",
+        "query": {
+          "affinity": 0.8
+        }
+      },
+      {
+        "entity_id": "fx-edge-a",
+        "name": "Duplicate Amber",
+        "query": {
+          "affinity": 0.9
+        }
+      },
+      {
+        "entity_id": "fx-edge-b",
+        "name": "Flat Birch",
+        "affinity": 0.7
+      },
+      {
+        "entity_id": "fx-edge-c",
+        "name": "String Cedar",
+        "query": {
+          "affinity": "0.7"
+        }
+      },
+      {
+        "entity_id": "fx-edge-d",
+        "name": "Range Dahlia",
+        "query": {
+          "affinity": 1.2
+        }
+      },
+      {
+        "entity_id": "fx-edge-e",
+        "name": "Tie Elm",
+        "query": {
+          "affinity": 0.5
+        }
+      },
+      {
+        "entity_id": "fx-edge-f",
+        "name": "Tie Fern",
+        "query": {
+          "affinity": 0.5
+        }
+      }
+    ]
+  }
+}

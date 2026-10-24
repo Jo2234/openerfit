@@ -1,0 +1,38 @@
+{
+  "results": {
+    "entities": [
+      {
+        "entity_id": "fx-brand-0",
+        "name": "Tidewater Cold Brew",
+        "subtype": "urn:entity:brand",
+        "query": {
+          "affinity": 0.8312
+        }
+      },
+      {
+        "entity_id": "fx-brand-1",
+        "name": "Gridline Bikes",
+        "subtype": "urn:entity:brand",
+        "query": {
+          "affinity": 0.7904
+        }
+      },
+      {
+        "entity_id": "fx-brand-2",
+        "name": "Hush Audio",
+        "subtype": "urn:entity:brand",
+        "query": {
+          "affinity": 0.7511
+        }
+      },
+      {
+        "entity_id": "fx-brand-3",
+        "name": "Mangrove Vinyl Co.",
+        "subtype": "urn:entity:brand",
+        "query": {
+          "affinity": 0.7088
+        }
+      }
+    ]
+  }
+}

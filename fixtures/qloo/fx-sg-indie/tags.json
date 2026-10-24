@@ -1,0 +1,14 @@
+{
+  "results": {
+    "tags": [
+      {
+        "id": "urn:tag:fixture:place:craft_beer",
+        "name": "Craft Beer"
+      },
+      {
+        "id": "urn:tag:fixture:place:brewery",
+        "name": "Brewery"
+      }
+    ]
+  }
+}

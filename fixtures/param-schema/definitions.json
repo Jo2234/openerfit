@@ -1,0 +1,7935 @@
+{
+  "formatVersion": 1,
+  "provenance": "Project-maintained factual parameter inventory derived from Qloo endpoint contracts; descriptive documentation is not reproduced.",
+  "upstreamUrls": [
+    "https://docs.qloo.com/reference/available-parameters-by-entity-type",
+    "https://docs.qloo.com/reference/parameters",
+    "https://docs.qloo.com/reference/insights-api-deep-dive",
+    "https://docs.qloo.com/reference/get-search",
+    "https://docs.qloo.com/reference/search-tags"
+  ],
+  "parameters": [
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "backfill.content_based.take",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 10,
+        "default": 10
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "backfill.cross_domain.take",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 20,
+        "default": 20
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "bias.content_based",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "number",
+        "format": "integer",
+        "default": 0.5,
+        "maximum": 1,
+        "minimum": 0
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "bias.quality",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "oneOf": [
+          {
+            "type": "string",
+            "enum": [
+              "very_low",
+              "low",
+              "mid",
+              "medium",
+              "high",
+              "very_high"
+            ]
+          },
+          {
+            "type": "number",
+            "exclusiveMinimum": 0
+          }
+        ],
+        "examples": [
+          "high"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "bias.trends",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "enum": [
+          "off",
+          "very_low",
+          "low",
+          "mid",
+          "medium",
+          "high",
+          "very_high"
+        ],
+        "default": "medium"
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "diversify.by",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "enum": [
+          "properties.geocode.city",
+          "properties.geocode.metro",
+          "subtype"
+        ],
+        "examples": [
+          "properties.geocode.city",
+          "properties.geocode.metro",
+          "subtype"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "diversify.take",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "minimum": 1,
+        "examples": [
+          5
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "feature.explainability",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "boolean",
+        "examples": [
+          true
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.address",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.audience.types",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string"
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.content_rating",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "enum": [
+          "G",
+          "PG",
+          "PG-13",
+          "R",
+          "NC-17",
+          "TV-G",
+          "TV-PG",
+          "TV-14",
+          "TV-MA",
+          "TV-Y",
+          "TV-Y7",
+          "TV-Y7-FV",
+          "Not Rated",
+          "Unrated",
+          "Approved",
+          "Passed",
+          "X",
+          "GP",
+          "M",
+          "13+",
+          "16+",
+          "18+"
+        ],
+        "examples": [
+          "PG-13",
+          "TV-MA",
+          "R,TV-14"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.date_of_birth.max",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "format": "date",
+        "examples": [
+          "2004-01-01"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.date_of_birth.min",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "format": "date",
+        "examples": [
+          "1996-01-01"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.date_of_death.max",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "format": "date",
+        "examples": [
+          "2004-01-01"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.date_of_death.min",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "format": "date",
+        "examples": [
+          "1985-01-01"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.dimensions.hotel_class",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5
+        },
+        "examples": [
+          4,
+          5
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.dimensions.price_level",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 4
+        },
+        "examples": [
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.entities",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string"
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.entities.query",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "restaurant"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.entity_ids",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string"
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.exclude.entities",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "39458DC0-F91D-4591-80A8-E254E66F84A2,B315A4B4-6756-4CF3-8297-75FD94CC8CF2"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.exclude.entities.query",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "array",
+        "items": {
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "address": {
+                  "type": "string"
+                }
+              }
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "examples": [
+          {
+            "name": "Balthazar",
+            "address": "80 Spring St, New York"
+          },
+          "Balthazar"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.exclude.location",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "POINT(-73.99823 40.722668)"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.exclude.location.geohash",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "dr5rs"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.exclude.location.query",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.exclude.location.radius",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "examples": [
+          10000
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.exclude.tags",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "urn:tag:genre:media:mystery,urn:tag:genre:media:drama"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.exists",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "enum": [
+          "properties.image",
+          "properties.description"
+        ],
+        "examples": [
+          "properties.image",
+          "properties.description"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.external.exists",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "resy,michelin"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.external.resy.count.max",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "minimum": 0,
+        "examples": [
+          200
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.external.resy.count.min",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "minimum": 0,
+        "examples": [
+          20
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.external.resy.party_size.max",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "minimum": 1,
+        "examples": [
+          10
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.external.resy.party_size.min",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "minimum": 1,
+        "examples": [
+          2
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.external.resy.rating.max",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 5,
+        "examples": [
+          4.5
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.external.resy.rating.min",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 5,
+        "examples": [
+          3.5
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.external.tripadvisor.rating.count.max",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "minimum": 0,
+        "examples": [
+          500
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.external.tripadvisor.rating.count.min",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "minimum": 0,
+        "examples": [
+          50
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.external.tripadvisor.rating.max",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 5,
+        "examples": [
+          4
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.external.tripadvisor.rating.min",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 5,
+        "examples": [
+          3
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.finale_year.max",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "examples": [
+          2021
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.finale_year.min",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "examples": [
+          2014
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.gender",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "female"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.geocode.admin1_region",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "NY"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.geocode.admin2_region",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "New York County"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.geocode.country_code",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "US"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.geocode.name",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "New York"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.hotel_class.max",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 5,
+        "examples": [
+          5
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.hotel_class.min",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 5,
+        "examples": [
+          3
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.hours",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "enum": [
+          "monday",
+          "tuesday",
+          "wednesday",
+          "thursday",
+          "friday",
+          "saturday",
+          "sunday"
+        ],
+        "examples": [
+          "monday"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.ids",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string"
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.latest_known_year.max",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {}
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.latest_known_year.min",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {}
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.location",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string"
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.location.geohash",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "dr5rsjk4sr2w"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.location.metro",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "New York"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.location.query",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.location.radius",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "default": 15000,
+        "maximum": 800000
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.parents.types",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "enum": [
+          "urn:audience:communities",
+          "urn:audience:global_issues",
+          "urn:audience:hobbies_and_interests",
+          "urn:audience:investing_interests",
+          "urn:audience:leisure",
+          "urn:audience:life_stage",
+          "urn:audience:lifestyle_preferences_beliefs",
+          "urn:audience:political_preferences",
+          "urn:audience:professional_area",
+          "urn:audience:spending_habits"
+        ],
+        "examples": [
+          "urn:audience:communities",
+          "urn:audience:global_issues"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.popularity.max",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1,
+        "examples": [
+          0.98
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.popularity.min",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1,
+        "examples": [
+          0.5
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.price_level.max",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 4,
+        "examples": [
+          3
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.price_level.min",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 4,
+        "examples": [
+          1
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.price_range.from",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 1000000,
+        "examples": [
+          200
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.price_range.max",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string"
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.price_range.min",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string"
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.price_range.to",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 1000000,
+        "examples": [
+          200
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.properties.business_rating.max",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "number",
+        "format": "float",
+        "enum": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "examples": [
+          3
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.properties.business_rating.min",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "number",
+        "format": "float",
+        "enum": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "examples": [
+          3
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.publication_year.max",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "number",
+        "examples": [
+          2021
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.publication_year.min",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "number",
+        "examples": [
+          1985
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.rating.max",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 5,
+        "examples": [
+          4.5
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.rating.min",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 5,
+        "examples": [
+          3.5
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.references_brand",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "examples": [
+          "636E1B95-6232-43E1-BDFE-37CD209C2CE3,7D2B1DFF-9D5D-44DE-970E-46B80C76CFA6"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.release_country",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "examples": [
+          "United States",
+          "France"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.release_date.max",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "format": "date",
+        "examples": [
+          "2024-01-01"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.release_date.min",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "format": "date",
+        "examples": [
+          "2021-01-01"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.release_year.max",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "examples": [
+          2024
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.release_year.min",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "examples": [
+          1996
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.results.entities",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "636E1B95-6232-43E1-BDFE-37CD209C2CE3,7D2B1DFF-9D5D-44DE-970E-46B80C76CFA6"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.results.entities.query",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.results.tags",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "examples": [
+          "urn:tag:genre:place:restaurant:japanese",
+          "urn:tag:style:qloo:indie"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.tag.types",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string"
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.tags",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "filter.type",
+      "tier": "guide",
+      "required": true,
+      "schema": {
+        "examples": [
+          "urn:entity:book"
+        ],
+        "type": "string",
+        "enum": [
+          "urn:entity:artist",
+          "urn:entity:book",
+          "urn:entity:brand",
+          "urn:entity:locality",
+          "urn:entity:movie",
+          "urn:entity:person",
+          "urn:entity:place",
+          "urn:entity:podcast",
+          "urn:entity:tv_show",
+          "urn:entity:videogame",
+          "urn:heatmap",
+          "urn:entity:audience"
+        ],
+        "x-enum-descriptions": [
+          "Artist",
+          "Book",
+          "Brand",
+          "Locality (partially supported)",
+          "Movie",
+          "Person",
+          "Place",
+          "Podcast",
+          "TV show",
+          "Videogame",
+          "Heatmap",
+          "Audience (deprecated)"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "heatmap.dimensions",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "enum": [
+            "quality",
+            "popularity",
+            "hotel_class",
+            "price_level"
+          ]
+        },
+        "examples": [
+          "quality",
+          "price_level"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "offset",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "examples": [
+          5
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "operator.exclude.tags",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "string"
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "operator.filter.exclude.tags",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "enum": [
+          "union",
+          "intersection"
+        ],
+        "examples": [
+          "union"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "operator.filter.external.exists",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "enum": [
+          "union",
+          "intersection"
+        ],
+        "examples": [
+          "union"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "operator.filter.references_brand",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "enum": [
+          "union",
+          "intersection"
+        ],
+        "examples": [
+          "union"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "operator.filter.release_country",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "enum": [
+          "intersection",
+          "union"
+        ],
+        "examples": [
+          "union"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "operator.filter.tags",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "enum": [
+          "intersection",
+          "union"
+        ],
+        "default": "union"
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "operator.signal.interests.tags",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "enum": [
+          "union",
+          "intersection"
+        ],
+        "examples": [
+          "union"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "output.heatmap.boundary",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "urn:entity:locality"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "page",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "format": "int32",
+        "minimum": 1,
+        "maximum": 100,
+        "default": 1
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "signal.demographics.age",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "enum": [
+          "35_and_younger",
+          "36_to_55",
+          "24_and_younger",
+          "25_to_29",
+          "30_to_34",
+          "35_to_44",
+          "45_to_54",
+          "55_and_older"
+        ],
+        "examples": [
+          "36_to_55"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "signal.demographics.age.weight",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "oneOf": [
+          {
+            "type": "number",
+            "minimum": 0
+          },
+          {
+            "type": "string",
+            "enum": [
+              "very_low",
+              "low",
+              "mid",
+              "medium",
+              "high",
+              "very_high"
+            ]
+          }
+        ],
+        "examples": [
+          "medium"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "signal.demographics.audiences",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "examples": [
+          "urn:audience:communities",
+          "urn:audience:spending_habits"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "signal.demographics.audiences.weight",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "oneOf": [
+          {
+            "type": "number",
+            "minimum": 0
+          },
+          {
+            "type": "string",
+            "enum": [
+              "very_low",
+              "low",
+              "mid",
+              "medium",
+              "high",
+              "very_high"
+            ]
+          }
+        ],
+        "examples": [
+          "medium"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "signal.demographics.gender",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "enum": [
+          "male",
+          "female"
+        ],
+        "examples": [
+          "male"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "signal.demographics.gender.weight",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "oneOf": [
+          {
+            "type": "number",
+            "minimum": 0
+          },
+          {
+            "type": "string",
+            "enum": [
+              "very_low",
+              "low",
+              "mid",
+              "medium",
+              "high",
+              "very_high"
+            ]
+          }
+        ],
+        "examples": [
+          "medium"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "signal.interests.entities",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "examples": [
+          "636E1B95-6232-43E1-BDFE-37CD209C2CE3,7D2B1DFF-9D5D-44DE-970E-46B80C76CFA6"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "signal.interests.entities.include",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "examples": [
+          "E12345,E67890"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "signal.interests.entities.query",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "array",
+        "items": {
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "address": {
+                  "type": "string"
+                },
+                "resolve_to": {
+                  "type": "string",
+                  "enum": [
+                    "place",
+                    "brand",
+                    "both"
+                  ]
+                }
+              }
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "examples": [
+          {
+            "name": "Balthazar",
+            "address": "80 Spring St, New York"
+          },
+          "Balthazar",
+          {
+            "name": "Naya",
+            "address": "ny",
+            "resolve_to": "both"
+          }
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "signal.interests.entities.weight",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "oneOf": [
+          {
+            "type": "number",
+            "minimum": 0
+          },
+          {
+            "type": "string",
+            "enum": [
+              "very_low",
+              "low",
+              "mid",
+              "medium",
+              "high",
+              "very_high"
+            ]
+          }
+        ],
+        "examples": [
+          "medium"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "signal.interests.tags",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "oneOf": [
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "tag": {
+                  "type": "string"
+                },
+                "weight": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "signal.interests.tags.weight",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "oneOf": [
+          {
+            "type": "number",
+            "minimum": 0
+          },
+          {
+            "type": "string",
+            "enum": [
+              "very_low",
+              "low",
+              "mid",
+              "medium",
+              "high",
+              "very_high"
+            ]
+          }
+        ],
+        "examples": [
+          "medium"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "signal.location",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "POINT(-73.99823 40.722668)"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "signal.location.query",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "New York City"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "signal.location.radius",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "maximum": 800000,
+        "examples": [
+          5000
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "signal.location.weight",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "oneOf": [
+          {
+            "type": "number",
+            "minimum": 0
+          },
+          {
+            "type": "string",
+            "enum": [
+              "very_low",
+              "low",
+              "mid",
+              "medium",
+              "high",
+              "very_high"
+            ]
+          }
+        ],
+        "examples": [
+          "medium"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "sort_by",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "enum": [
+          "affinity",
+          "distance",
+          "rating",
+          "quality"
+        ],
+        "examples": [
+          "affinity"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:artist",
+      "name": "take",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "default": 20,
+        "minimum": 1,
+        "maximum": 50,
+        "examples": [
+          10
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "backfill.content_based.take",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 10,
+        "default": 10
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "backfill.cross_domain.take",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 20,
+        "default": 20
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "bias.content_based",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "number",
+        "format": "integer",
+        "default": 0.5,
+        "maximum": 1,
+        "minimum": 0
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "bias.quality",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "oneOf": [
+          {
+            "type": "string",
+            "enum": [
+              "very_low",
+              "low",
+              "mid",
+              "medium",
+              "high",
+              "very_high"
+            ]
+          },
+          {
+            "type": "number",
+            "exclusiveMinimum": 0
+          }
+        ],
+        "examples": [
+          "high"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "bias.trends",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "enum": [
+          "off",
+          "very_low",
+          "low",
+          "mid",
+          "medium",
+          "high",
+          "very_high"
+        ],
+        "default": "medium"
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "diversify.by",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "enum": [
+          "properties.geocode.city",
+          "properties.geocode.metro",
+          "subtype"
+        ],
+        "examples": [
+          "properties.geocode.city",
+          "properties.geocode.metro",
+          "subtype"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "diversify.take",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "minimum": 1,
+        "examples": [
+          5
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "feature.explainability",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "boolean",
+        "examples": [
+          true
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.address",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.audience.types",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string"
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.content_rating",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "enum": [
+          "G",
+          "PG",
+          "PG-13",
+          "R",
+          "NC-17",
+          "TV-G",
+          "TV-PG",
+          "TV-14",
+          "TV-MA",
+          "TV-Y",
+          "TV-Y7",
+          "TV-Y7-FV",
+          "Not Rated",
+          "Unrated",
+          "Approved",
+          "Passed",
+          "X",
+          "GP",
+          "M",
+          "13+",
+          "16+",
+          "18+"
+        ],
+        "examples": [
+          "PG-13",
+          "TV-MA",
+          "R,TV-14"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.date_of_birth.max",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "format": "date",
+        "examples": [
+          "2004-01-01"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.date_of_birth.min",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "format": "date",
+        "examples": [
+          "1996-01-01"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.date_of_death.max",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "format": "date",
+        "examples": [
+          "2004-01-01"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.date_of_death.min",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "format": "date",
+        "examples": [
+          "1985-01-01"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.dimensions.hotel_class",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5
+        },
+        "examples": [
+          4,
+          5
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.dimensions.price_level",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 4
+        },
+        "examples": [
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.entities",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string"
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.entities.query",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "restaurant"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.entity_ids",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string"
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.exclude.entities",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "39458DC0-F91D-4591-80A8-E254E66F84A2,B315A4B4-6756-4CF3-8297-75FD94CC8CF2"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.exclude.entities.query",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "array",
+        "items": {
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "address": {
+                  "type": "string"
+                }
+              }
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "examples": [
+          {
+            "name": "Balthazar",
+            "address": "80 Spring St, New York"
+          },
+          "Balthazar"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.exclude.location",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "POINT(-73.99823 40.722668)"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.exclude.location.geohash",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "dr5rs"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.exclude.location.query",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.exclude.location.radius",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "examples": [
+          10000
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.exclude.tags",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "urn:tag:genre:media:mystery,urn:tag:genre:media:drama"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.exists",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "enum": [
+          "properties.image",
+          "properties.description"
+        ],
+        "examples": [
+          "properties.image",
+          "properties.description"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.external.exists",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "resy,michelin"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.external.resy.count.max",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "minimum": 0,
+        "examples": [
+          200
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.external.resy.count.min",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "minimum": 0,
+        "examples": [
+          20
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.external.resy.party_size.max",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "minimum": 1,
+        "examples": [
+          10
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.external.resy.party_size.min",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "minimum": 1,
+        "examples": [
+          2
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.external.resy.rating.max",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 5,
+        "examples": [
+          4.5
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.external.resy.rating.min",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 5,
+        "examples": [
+          3.5
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.external.tripadvisor.rating.count.max",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "minimum": 0,
+        "examples": [
+          500
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.external.tripadvisor.rating.count.min",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "minimum": 0,
+        "examples": [
+          50
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.external.tripadvisor.rating.max",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 5,
+        "examples": [
+          4
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.external.tripadvisor.rating.min",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 5,
+        "examples": [
+          3
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.finale_year.max",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "examples": [
+          2021
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.finale_year.min",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "examples": [
+          2014
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.gender",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "female"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.geocode.admin1_region",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "NY"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.geocode.admin2_region",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "New York County"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.geocode.country_code",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "US"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.geocode.name",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "New York"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.hotel_class.max",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 5,
+        "examples": [
+          5
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.hotel_class.min",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 5,
+        "examples": [
+          3
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.hours",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "enum": [
+          "monday",
+          "tuesday",
+          "wednesday",
+          "thursday",
+          "friday",
+          "saturday",
+          "sunday"
+        ],
+        "examples": [
+          "monday"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.ids",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string"
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.latest_known_year.max",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {}
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.latest_known_year.min",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {}
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.location",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string"
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.location.geohash",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "dr5rsjk4sr2w"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.location.metro",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "New York"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.location.query",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.location.radius",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "default": 15000,
+        "maximum": 800000
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.parents.types",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "enum": [
+          "urn:audience:communities",
+          "urn:audience:global_issues",
+          "urn:audience:hobbies_and_interests",
+          "urn:audience:investing_interests",
+          "urn:audience:leisure",
+          "urn:audience:life_stage",
+          "urn:audience:lifestyle_preferences_beliefs",
+          "urn:audience:political_preferences",
+          "urn:audience:professional_area",
+          "urn:audience:spending_habits"
+        ],
+        "examples": [
+          "urn:audience:communities",
+          "urn:audience:global_issues"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.popularity.max",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1,
+        "examples": [
+          0.98
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.popularity.min",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1,
+        "examples": [
+          0.5
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.price_level.max",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 4,
+        "examples": [
+          3
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.price_level.min",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 4,
+        "examples": [
+          1
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.price_range.from",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 1000000,
+        "examples": [
+          200
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.price_range.max",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string"
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.price_range.min",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string"
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.price_range.to",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 1000000,
+        "examples": [
+          200
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.properties.business_rating.max",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "number",
+        "format": "float",
+        "enum": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "examples": [
+          3
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.properties.business_rating.min",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "number",
+        "format": "float",
+        "enum": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "examples": [
+          3
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.publication_year.max",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "number",
+        "examples": [
+          2021
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.publication_year.min",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "number",
+        "examples": [
+          1985
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.rating.max",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 5,
+        "examples": [
+          4.5
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.rating.min",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 5,
+        "examples": [
+          3.5
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.references_brand",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "examples": [
+          "636E1B95-6232-43E1-BDFE-37CD209C2CE3,7D2B1DFF-9D5D-44DE-970E-46B80C76CFA6"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.release_country",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "examples": [
+          "United States",
+          "France"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.release_date.max",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "format": "date",
+        "examples": [
+          "2024-01-01"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.release_date.min",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "format": "date",
+        "examples": [
+          "2021-01-01"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.release_year.max",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "examples": [
+          2024
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.release_year.min",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "examples": [
+          1996
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.results.entities",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "636E1B95-6232-43E1-BDFE-37CD209C2CE3,7D2B1DFF-9D5D-44DE-970E-46B80C76CFA6"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.results.entities.query",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.results.tags",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "examples": [
+          "urn:tag:genre:place:restaurant:japanese",
+          "urn:tag:style:qloo:indie"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.tag.types",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string"
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.tags",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "filter.type",
+      "tier": "guide",
+      "required": true,
+      "schema": {
+        "examples": [
+          "urn:entity:book"
+        ],
+        "type": "string",
+        "enum": [
+          "urn:entity:artist",
+          "urn:entity:book",
+          "urn:entity:brand",
+          "urn:entity:locality",
+          "urn:entity:movie",
+          "urn:entity:person",
+          "urn:entity:place",
+          "urn:entity:podcast",
+          "urn:entity:tv_show",
+          "urn:entity:videogame",
+          "urn:heatmap",
+          "urn:entity:audience"
+        ],
+        "x-enum-descriptions": [
+          "Artist",
+          "Book",
+          "Brand",
+          "Locality (partially supported)",
+          "Movie",
+          "Person",
+          "Place",
+          "Podcast",
+          "TV show",
+          "Videogame",
+          "Heatmap",
+          "Audience (deprecated)"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "heatmap.dimensions",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "enum": [
+            "quality",
+            "popularity",
+            "hotel_class",
+            "price_level"
+          ]
+        },
+        "examples": [
+          "quality",
+          "price_level"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "offset",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "examples": [
+          5
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "operator.exclude.tags",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "string"
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "operator.filter.exclude.tags",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "enum": [
+          "union",
+          "intersection"
+        ],
+        "examples": [
+          "union"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "operator.filter.external.exists",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "enum": [
+          "union",
+          "intersection"
+        ],
+        "examples": [
+          "union"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "operator.filter.references_brand",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "enum": [
+          "union",
+          "intersection"
+        ],
+        "examples": [
+          "union"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "operator.filter.release_country",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "enum": [
+          "intersection",
+          "union"
+        ],
+        "examples": [
+          "union"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "operator.filter.tags",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "enum": [
+          "intersection",
+          "union"
+        ],
+        "default": "union"
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "operator.signal.interests.tags",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "enum": [
+          "union",
+          "intersection"
+        ],
+        "examples": [
+          "union"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "output.heatmap.boundary",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "urn:entity:locality"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "page",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "format": "int32",
+        "minimum": 1,
+        "maximum": 100,
+        "default": 1
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "signal.demographics.age",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "enum": [
+          "35_and_younger",
+          "36_to_55",
+          "24_and_younger",
+          "25_to_29",
+          "30_to_34",
+          "35_to_44",
+          "45_to_54",
+          "55_and_older"
+        ],
+        "examples": [
+          "36_to_55"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "signal.demographics.age.weight",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "oneOf": [
+          {
+            "type": "number",
+            "minimum": 0
+          },
+          {
+            "type": "string",
+            "enum": [
+              "very_low",
+              "low",
+              "mid",
+              "medium",
+              "high",
+              "very_high"
+            ]
+          }
+        ],
+        "examples": [
+          "medium"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "signal.demographics.audiences",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "examples": [
+          "urn:audience:communities",
+          "urn:audience:spending_habits"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "signal.demographics.audiences.weight",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "oneOf": [
+          {
+            "type": "number",
+            "minimum": 0
+          },
+          {
+            "type": "string",
+            "enum": [
+              "very_low",
+              "low",
+              "mid",
+              "medium",
+              "high",
+              "very_high"
+            ]
+          }
+        ],
+        "examples": [
+          "medium"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "signal.demographics.gender",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "enum": [
+          "male",
+          "female"
+        ],
+        "examples": [
+          "male"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "signal.demographics.gender.weight",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "oneOf": [
+          {
+            "type": "number",
+            "minimum": 0
+          },
+          {
+            "type": "string",
+            "enum": [
+              "very_low",
+              "low",
+              "mid",
+              "medium",
+              "high",
+              "very_high"
+            ]
+          }
+        ],
+        "examples": [
+          "medium"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "signal.interests.entities",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "examples": [
+          "636E1B95-6232-43E1-BDFE-37CD209C2CE3,7D2B1DFF-9D5D-44DE-970E-46B80C76CFA6"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "signal.interests.entities.include",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "examples": [
+          "E12345,E67890"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "signal.interests.entities.query",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "array",
+        "items": {
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "address": {
+                  "type": "string"
+                },
+                "resolve_to": {
+                  "type": "string",
+                  "enum": [
+                    "place",
+                    "brand",
+                    "both"
+                  ]
+                }
+              }
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "examples": [
+          {
+            "name": "Balthazar",
+            "address": "80 Spring St, New York"
+          },
+          "Balthazar",
+          {
+            "name": "Naya",
+            "address": "ny",
+            "resolve_to": "both"
+          }
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "signal.interests.entities.weight",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "oneOf": [
+          {
+            "type": "number",
+            "minimum": 0
+          },
+          {
+            "type": "string",
+            "enum": [
+              "very_low",
+              "low",
+              "mid",
+              "medium",
+              "high",
+              "very_high"
+            ]
+          }
+        ],
+        "examples": [
+          "medium"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "signal.interests.tags",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "oneOf": [
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "tag": {
+                  "type": "string"
+                },
+                "weight": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "signal.interests.tags.weight",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "oneOf": [
+          {
+            "type": "number",
+            "minimum": 0
+          },
+          {
+            "type": "string",
+            "enum": [
+              "very_low",
+              "low",
+              "mid",
+              "medium",
+              "high",
+              "very_high"
+            ]
+          }
+        ],
+        "examples": [
+          "medium"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "signal.location",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "POINT(-73.99823 40.722668)"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "signal.location.query",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "New York City"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "signal.location.radius",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "maximum": 800000,
+        "examples": [
+          5000
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "signal.location.weight",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "oneOf": [
+          {
+            "type": "number",
+            "minimum": 0
+          },
+          {
+            "type": "string",
+            "enum": [
+              "very_low",
+              "low",
+              "mid",
+              "medium",
+              "high",
+              "very_high"
+            ]
+          }
+        ],
+        "examples": [
+          "medium"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "sort_by",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "enum": [
+          "affinity",
+          "distance",
+          "rating",
+          "quality"
+        ],
+        "examples": [
+          "affinity"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:brand",
+      "name": "take",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "default": 20,
+        "minimum": 1,
+        "maximum": 50,
+        "examples": [
+          10
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "backfill.content_based.take",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 10,
+        "default": 10
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "backfill.cross_domain.take",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 20,
+        "default": 20
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "bias.content_based",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "number",
+        "format": "integer",
+        "default": 0.5,
+        "maximum": 1,
+        "minimum": 0
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "bias.quality",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "oneOf": [
+          {
+            "type": "string",
+            "enum": [
+              "very_low",
+              "low",
+              "mid",
+              "medium",
+              "high",
+              "very_high"
+            ]
+          },
+          {
+            "type": "number",
+            "exclusiveMinimum": 0
+          }
+        ],
+        "examples": [
+          "high"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "bias.trends",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "enum": [
+          "off",
+          "very_low",
+          "low",
+          "mid",
+          "medium",
+          "high",
+          "very_high"
+        ],
+        "default": "medium"
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "diversify.by",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "enum": [
+          "properties.geocode.city",
+          "properties.geocode.metro",
+          "subtype"
+        ],
+        "examples": [
+          "properties.geocode.city",
+          "properties.geocode.metro",
+          "subtype"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "diversify.take",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "minimum": 1,
+        "examples": [
+          5
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "feature.explainability",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "boolean",
+        "examples": [
+          true
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.address",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.audience.types",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string"
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.content_rating",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "enum": [
+          "G",
+          "PG",
+          "PG-13",
+          "R",
+          "NC-17",
+          "TV-G",
+          "TV-PG",
+          "TV-14",
+          "TV-MA",
+          "TV-Y",
+          "TV-Y7",
+          "TV-Y7-FV",
+          "Not Rated",
+          "Unrated",
+          "Approved",
+          "Passed",
+          "X",
+          "GP",
+          "M",
+          "13+",
+          "16+",
+          "18+"
+        ],
+        "examples": [
+          "PG-13",
+          "TV-MA",
+          "R,TV-14"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.date_of_birth.max",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "format": "date",
+        "examples": [
+          "2004-01-01"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.date_of_birth.min",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "format": "date",
+        "examples": [
+          "1996-01-01"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.date_of_death.max",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "format": "date",
+        "examples": [
+          "2004-01-01"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.date_of_death.min",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "format": "date",
+        "examples": [
+          "1985-01-01"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.dimensions.hotel_class",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5
+        },
+        "examples": [
+          4,
+          5
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.dimensions.price_level",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 4
+        },
+        "examples": [
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.entities",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string"
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.entities.query",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "restaurant"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.entity_ids",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string"
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.exclude.entities",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "39458DC0-F91D-4591-80A8-E254E66F84A2,B315A4B4-6756-4CF3-8297-75FD94CC8CF2"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.exclude.entities.query",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "array",
+        "items": {
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "address": {
+                  "type": "string"
+                }
+              }
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "examples": [
+          {
+            "name": "Balthazar",
+            "address": "80 Spring St, New York"
+          },
+          "Balthazar"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.exclude.location",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "POINT(-73.99823 40.722668)"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.exclude.location.geohash",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "dr5rs"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.exclude.location.query",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.exclude.location.radius",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "examples": [
+          10000
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.exclude.tags",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "urn:tag:genre:media:mystery,urn:tag:genre:media:drama"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.exists",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "enum": [
+          "properties.image",
+          "properties.description"
+        ],
+        "examples": [
+          "properties.image",
+          "properties.description"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.external.exists",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "resy,michelin"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.external.resy.count.max",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "minimum": 0,
+        "examples": [
+          200
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.external.resy.count.min",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "minimum": 0,
+        "examples": [
+          20
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.external.resy.party_size.max",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "minimum": 1,
+        "examples": [
+          10
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.external.resy.party_size.min",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "minimum": 1,
+        "examples": [
+          2
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.external.resy.rating.max",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 5,
+        "examples": [
+          4.5
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.external.resy.rating.min",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 5,
+        "examples": [
+          3.5
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.external.tripadvisor.rating.count.max",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "minimum": 0,
+        "examples": [
+          500
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.external.tripadvisor.rating.count.min",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "minimum": 0,
+        "examples": [
+          50
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.external.tripadvisor.rating.max",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 5,
+        "examples": [
+          4
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.external.tripadvisor.rating.min",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 5,
+        "examples": [
+          3
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.finale_year.max",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "examples": [
+          2021
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.finale_year.min",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "examples": [
+          2014
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.gender",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "female"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.geocode.admin1_region",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "NY"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.geocode.admin2_region",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "New York County"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.geocode.country_code",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "US"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.geocode.name",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "New York"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.hotel_class.max",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 5,
+        "examples": [
+          5
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.hotel_class.min",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 5,
+        "examples": [
+          3
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.hours",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "enum": [
+          "monday",
+          "tuesday",
+          "wednesday",
+          "thursday",
+          "friday",
+          "saturday",
+          "sunday"
+        ],
+        "examples": [
+          "monday"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.ids",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string"
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.latest_known_year.max",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {}
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.latest_known_year.min",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {}
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.location",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "string"
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.location.geohash",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "dr5rsjk4sr2w"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.location.metro",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "New York"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.location.query",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.location.radius",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "default": 15000,
+        "maximum": 800000
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.parents.types",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "enum": [
+          "urn:audience:communities",
+          "urn:audience:global_issues",
+          "urn:audience:hobbies_and_interests",
+          "urn:audience:investing_interests",
+          "urn:audience:leisure",
+          "urn:audience:life_stage",
+          "urn:audience:lifestyle_preferences_beliefs",
+          "urn:audience:political_preferences",
+          "urn:audience:professional_area",
+          "urn:audience:spending_habits"
+        ],
+        "examples": [
+          "urn:audience:communities",
+          "urn:audience:global_issues"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.popularity.max",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1,
+        "examples": [
+          0.98
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.popularity.min",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1,
+        "examples": [
+          0.5
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.price_level.max",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 4,
+        "examples": [
+          3
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.price_level.min",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 4,
+        "examples": [
+          1
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.price_range.from",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 1000000,
+        "examples": [
+          200
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.price_range.max",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string"
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.price_range.min",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string"
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.price_range.to",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 1000000,
+        "examples": [
+          200
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.properties.business_rating.max",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "number",
+        "format": "float",
+        "enum": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "examples": [
+          3
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.properties.business_rating.min",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "number",
+        "format": "float",
+        "enum": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "examples": [
+          3
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.properties.resy.rating.max",
+      "schema": {
+        "type": "string"
+      },
+      "tier": "guide",
+      "required": false
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.properties.resy.rating.min",
+      "schema": {
+        "type": "string"
+      },
+      "tier": "guide",
+      "required": false
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.publication_year.max",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "number",
+        "examples": [
+          2021
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.publication_year.min",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "number",
+        "examples": [
+          1985
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.rating.max",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 5,
+        "examples": [
+          4.5
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.rating.min",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 5,
+        "examples": [
+          3.5
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.references_brand",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "examples": [
+          "636E1B95-6232-43E1-BDFE-37CD209C2CE3,7D2B1DFF-9D5D-44DE-970E-46B80C76CFA6"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.release_country",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "examples": [
+          "United States",
+          "France"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.release_date.max",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "format": "date",
+        "examples": [
+          "2024-01-01"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.release_date.min",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "format": "date",
+        "examples": [
+          "2021-01-01"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.release_year.max",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "examples": [
+          2024
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.release_year.min",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "examples": [
+          1996
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.results.entities",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "636E1B95-6232-43E1-BDFE-37CD209C2CE3,7D2B1DFF-9D5D-44DE-970E-46B80C76CFA6"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.results.entities.query",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.results.tags",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "examples": [
+          "urn:tag:genre:place:restaurant:japanese",
+          "urn:tag:style:qloo:indie"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.resy.rating.party.max",
+      "schema": {
+        "type": "string"
+      },
+      "tier": "guide",
+      "required": false
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.resy.rating.party.min",
+      "schema": {
+        "type": "string"
+      },
+      "tier": "guide",
+      "required": false
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.resy.rating_count.max",
+      "schema": {
+        "type": "string"
+      },
+      "tier": "guide",
+      "required": false
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.resy.rating_count.min",
+      "schema": {
+        "type": "string"
+      },
+      "tier": "guide",
+      "required": false
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.tag.types",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string"
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.tags",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "filter.type",
+      "tier": "guide",
+      "required": true,
+      "schema": {
+        "examples": [
+          "urn:entity:book"
+        ],
+        "type": "string",
+        "enum": [
+          "urn:entity:artist",
+          "urn:entity:book",
+          "urn:entity:brand",
+          "urn:entity:locality",
+          "urn:entity:movie",
+          "urn:entity:person",
+          "urn:entity:place",
+          "urn:entity:podcast",
+          "urn:entity:tv_show",
+          "urn:entity:videogame",
+          "urn:heatmap",
+          "urn:entity:audience"
+        ],
+        "x-enum-descriptions": [
+          "Artist",
+          "Book",
+          "Brand",
+          "Locality (partially supported)",
+          "Movie",
+          "Person",
+          "Place",
+          "Podcast",
+          "TV show",
+          "Videogame",
+          "Heatmap",
+          "Audience (deprecated)"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "heatmap.dimensions",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "enum": [
+            "quality",
+            "popularity",
+            "hotel_class",
+            "price_level"
+          ]
+        },
+        "examples": [
+          "quality",
+          "price_level"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "offset",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "examples": [
+          5
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "operator.exclude.tags",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "string"
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "operator.filter.exclude.tags",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "enum": [
+          "union",
+          "intersection"
+        ],
+        "examples": [
+          "union"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "operator.filter.external.exists",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "enum": [
+          "union",
+          "intersection"
+        ],
+        "examples": [
+          "union"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "operator.filter.references_brand",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "enum": [
+          "union",
+          "intersection"
+        ],
+        "examples": [
+          "union"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "operator.filter.release_country",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "enum": [
+          "intersection",
+          "union"
+        ],
+        "examples": [
+          "union"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "operator.filter.tags",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "enum": [
+          "intersection",
+          "union"
+        ],
+        "default": "union"
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "operator.signal.interests.tags",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "enum": [
+          "union",
+          "intersection"
+        ],
+        "examples": [
+          "union"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "output.heatmap.boundary",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "urn:entity:locality"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "page",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "format": "int32",
+        "minimum": 1,
+        "maximum": 100,
+        "default": 1
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "signal.demographics.age",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "enum": [
+          "35_and_younger",
+          "36_to_55",
+          "24_and_younger",
+          "25_to_29",
+          "30_to_34",
+          "35_to_44",
+          "45_to_54",
+          "55_and_older"
+        ],
+        "examples": [
+          "36_to_55"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "signal.demographics.age.weight",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "oneOf": [
+          {
+            "type": "number",
+            "minimum": 0
+          },
+          {
+            "type": "string",
+            "enum": [
+              "very_low",
+              "low",
+              "mid",
+              "medium",
+              "high",
+              "very_high"
+            ]
+          }
+        ],
+        "examples": [
+          "medium"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "signal.demographics.audiences",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "examples": [
+          "urn:audience:communities",
+          "urn:audience:spending_habits"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "signal.demographics.audiences.weight",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "oneOf": [
+          {
+            "type": "number",
+            "minimum": 0
+          },
+          {
+            "type": "string",
+            "enum": [
+              "very_low",
+              "low",
+              "mid",
+              "medium",
+              "high",
+              "very_high"
+            ]
+          }
+        ],
+        "examples": [
+          "medium"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "signal.demographics.gender",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "enum": [
+          "male",
+          "female"
+        ],
+        "examples": [
+          "male"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "signal.demographics.gender.weight",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "oneOf": [
+          {
+            "type": "number",
+            "minimum": 0
+          },
+          {
+            "type": "string",
+            "enum": [
+              "very_low",
+              "low",
+              "mid",
+              "medium",
+              "high",
+              "very_high"
+            ]
+          }
+        ],
+        "examples": [
+          "medium"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "signal.interests.entities",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "examples": [
+          "636E1B95-6232-43E1-BDFE-37CD209C2CE3,7D2B1DFF-9D5D-44DE-970E-46B80C76CFA6"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "signal.interests.entities.include",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "examples": [
+          "E12345,E67890"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "signal.interests.entities.query",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "array",
+        "items": {
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "address": {
+                  "type": "string"
+                },
+                "resolve_to": {
+                  "type": "string",
+                  "enum": [
+                    "place",
+                    "brand",
+                    "both"
+                  ]
+                }
+              }
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "examples": [
+          {
+            "name": "Balthazar",
+            "address": "80 Spring St, New York"
+          },
+          "Balthazar",
+          {
+            "name": "Naya",
+            "address": "ny",
+            "resolve_to": "both"
+          }
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "signal.interests.entities.weight",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "oneOf": [
+          {
+            "type": "number",
+            "minimum": 0
+          },
+          {
+            "type": "string",
+            "enum": [
+              "very_low",
+              "low",
+              "mid",
+              "medium",
+              "high",
+              "very_high"
+            ]
+          }
+        ],
+        "examples": [
+          "medium"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "signal.interests.tags",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "oneOf": [
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "tag": {
+                  "type": "string"
+                },
+                "weight": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "signal.interests.tags.weight",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "oneOf": [
+          {
+            "type": "number",
+            "minimum": 0
+          },
+          {
+            "type": "string",
+            "enum": [
+              "very_low",
+              "low",
+              "mid",
+              "medium",
+              "high",
+              "very_high"
+            ]
+          }
+        ],
+        "examples": [
+          "medium"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "signal.location",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "POINT(-73.99823 40.722668)"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "signal.location.query",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "New York City"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "signal.location.radius",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "maximum": 800000,
+        "examples": [
+          5000
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "signal.location.weight",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "oneOf": [
+          {
+            "type": "number",
+            "minimum": 0
+          },
+          {
+            "type": "string",
+            "enum": [
+              "very_low",
+              "low",
+              "mid",
+              "medium",
+              "high",
+              "very_high"
+            ]
+          }
+        ],
+        "examples": [
+          "medium"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "sort_by",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "enum": [
+          "affinity",
+          "distance",
+          "rating",
+          "quality"
+        ],
+        "examples": [
+          "affinity"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:place",
+      "name": "take",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "default": 20,
+        "minimum": 1,
+        "maximum": 50,
+        "examples": [
+          10
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "backfill.content_based.take",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 10,
+        "default": 10
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "backfill.cross_domain.take",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 20,
+        "default": 20
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "bias.content_based",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "number",
+        "format": "integer",
+        "default": 0.5,
+        "maximum": 1,
+        "minimum": 0
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "bias.quality",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "oneOf": [
+          {
+            "type": "string",
+            "enum": [
+              "very_low",
+              "low",
+              "mid",
+              "medium",
+              "high",
+              "very_high"
+            ]
+          },
+          {
+            "type": "number",
+            "exclusiveMinimum": 0
+          }
+        ],
+        "examples": [
+          "high"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "bias.trends",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "enum": [
+          "off",
+          "very_low",
+          "low",
+          "mid",
+          "medium",
+          "high",
+          "very_high"
+        ],
+        "default": "medium"
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "diversify.by",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "enum": [
+          "properties.geocode.city",
+          "properties.geocode.metro",
+          "subtype"
+        ],
+        "examples": [
+          "properties.geocode.city",
+          "properties.geocode.metro",
+          "subtype"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "diversify.take",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "minimum": 1,
+        "examples": [
+          5
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "feature.explainability",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "boolean",
+        "examples": [
+          true
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.address",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.audience.types",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string"
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.content_rating",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "enum": [
+          "G",
+          "PG",
+          "PG-13",
+          "R",
+          "NC-17",
+          "TV-G",
+          "TV-PG",
+          "TV-14",
+          "TV-MA",
+          "TV-Y",
+          "TV-Y7",
+          "TV-Y7-FV",
+          "Not Rated",
+          "Unrated",
+          "Approved",
+          "Passed",
+          "X",
+          "GP",
+          "M",
+          "13+",
+          "16+",
+          "18+"
+        ],
+        "examples": [
+          "PG-13",
+          "TV-MA",
+          "R,TV-14"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.date_of_birth.max",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "format": "date",
+        "examples": [
+          "2004-01-01"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.date_of_birth.min",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "format": "date",
+        "examples": [
+          "1996-01-01"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.date_of_death.max",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "format": "date",
+        "examples": [
+          "2004-01-01"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.date_of_death.min",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "format": "date",
+        "examples": [
+          "1985-01-01"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.dimensions.hotel_class",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5
+        },
+        "examples": [
+          4,
+          5
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.dimensions.price_level",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 4
+        },
+        "examples": [
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.entities",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string"
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.entities.query",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "restaurant"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.entity_ids",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string"
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.exclude.entities",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "39458DC0-F91D-4591-80A8-E254E66F84A2,B315A4B4-6756-4CF3-8297-75FD94CC8CF2"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.exclude.entities.query",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "array",
+        "items": {
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "address": {
+                  "type": "string"
+                }
+              }
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "examples": [
+          {
+            "name": "Balthazar",
+            "address": "80 Spring St, New York"
+          },
+          "Balthazar"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.exclude.location",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "POINT(-73.99823 40.722668)"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.exclude.location.geohash",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "dr5rs"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.exclude.location.query",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.exclude.location.radius",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "examples": [
+          10000
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.exclude.tags",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "urn:tag:genre:media:mystery,urn:tag:genre:media:drama"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.exists",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "enum": [
+          "properties.image",
+          "properties.description"
+        ],
+        "examples": [
+          "properties.image",
+          "properties.description"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.external.exists",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "resy,michelin"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.external.resy.count.max",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "minimum": 0,
+        "examples": [
+          200
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.external.resy.count.min",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "minimum": 0,
+        "examples": [
+          20
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.external.resy.party_size.max",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "minimum": 1,
+        "examples": [
+          10
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.external.resy.party_size.min",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "minimum": 1,
+        "examples": [
+          2
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.external.resy.rating.max",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 5,
+        "examples": [
+          4.5
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.external.resy.rating.min",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 5,
+        "examples": [
+          3.5
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.external.tripadvisor.rating.count.max",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "minimum": 0,
+        "examples": [
+          500
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.external.tripadvisor.rating.count.min",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "minimum": 0,
+        "examples": [
+          50
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.external.tripadvisor.rating.max",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 5,
+        "examples": [
+          4
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.external.tripadvisor.rating.min",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 5,
+        "examples": [
+          3
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.finale_year.max",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "examples": [
+          2021
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.finale_year.min",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "examples": [
+          2014
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.gender",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "female"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.geocode.admin1_region",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "NY"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.geocode.admin2_region",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "New York County"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.geocode.country_code",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "US"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.geocode.name",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "New York"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.hotel_class.max",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 5,
+        "examples": [
+          5
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.hotel_class.min",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 5,
+        "examples": [
+          3
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.hours",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "enum": [
+          "monday",
+          "tuesday",
+          "wednesday",
+          "thursday",
+          "friday",
+          "saturday",
+          "sunday"
+        ],
+        "examples": [
+          "monday"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.ids",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string"
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.latest_known_year.max",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {}
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.latest_known_year.min",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {}
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.location",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string"
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.location.geohash",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "dr5rsjk4sr2w"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.location.metro",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "New York"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.location.query",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.location.radius",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "default": 15000,
+        "maximum": 800000
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.parents.types",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "enum": [
+          "urn:audience:communities",
+          "urn:audience:global_issues",
+          "urn:audience:hobbies_and_interests",
+          "urn:audience:investing_interests",
+          "urn:audience:leisure",
+          "urn:audience:life_stage",
+          "urn:audience:lifestyle_preferences_beliefs",
+          "urn:audience:political_preferences",
+          "urn:audience:professional_area",
+          "urn:audience:spending_habits"
+        ],
+        "examples": [
+          "urn:audience:communities",
+          "urn:audience:global_issues"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.popularity.max",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1,
+        "examples": [
+          0.98
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.popularity.min",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1,
+        "examples": [
+          0.5
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.price_level.max",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 4,
+        "examples": [
+          3
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.price_level.min",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 4,
+        "examples": [
+          1
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.price_range.from",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 1000000,
+        "examples": [
+          200
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.price_range.max",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string"
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.price_range.min",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string"
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.price_range.to",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 1000000,
+        "examples": [
+          200
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.properties.business_rating.max",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "number",
+        "format": "float",
+        "enum": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "examples": [
+          3
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.properties.business_rating.min",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "number",
+        "format": "float",
+        "enum": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "examples": [
+          3
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.publication_year.max",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "number",
+        "examples": [
+          2021
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.publication_year.min",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "number",
+        "examples": [
+          1985
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.rating.max",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 5,
+        "examples": [
+          4.5
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.rating.min",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 5,
+        "examples": [
+          3.5
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.references_brand",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "examples": [
+          "636E1B95-6232-43E1-BDFE-37CD209C2CE3,7D2B1DFF-9D5D-44DE-970E-46B80C76CFA6"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.release_country",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "examples": [
+          "United States",
+          "France"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.release_date.max",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "format": "date",
+        "examples": [
+          "2024-01-01"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.release_date.min",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "format": "date",
+        "examples": [
+          "2021-01-01"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.release_year.max",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "examples": [
+          2024
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.release_year.min",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "examples": [
+          1996
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.results.entities",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "636E1B95-6232-43E1-BDFE-37CD209C2CE3,7D2B1DFF-9D5D-44DE-970E-46B80C76CFA6"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.results.entities.query",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.results.tags",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "examples": [
+          "urn:tag:genre:place:restaurant:japanese",
+          "urn:tag:style:qloo:indie"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.tag.types",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string"
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.tags",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "filter.type",
+      "tier": "guide",
+      "required": true,
+      "schema": {
+        "examples": [
+          "urn:entity:book"
+        ],
+        "type": "string",
+        "enum": [
+          "urn:entity:artist",
+          "urn:entity:book",
+          "urn:entity:brand",
+          "urn:entity:locality",
+          "urn:entity:movie",
+          "urn:entity:person",
+          "urn:entity:place",
+          "urn:entity:podcast",
+          "urn:entity:tv_show",
+          "urn:entity:videogame",
+          "urn:heatmap",
+          "urn:entity:audience"
+        ],
+        "x-enum-descriptions": [
+          "Artist",
+          "Book",
+          "Brand",
+          "Locality (partially supported)",
+          "Movie",
+          "Person",
+          "Place",
+          "Podcast",
+          "TV show",
+          "Videogame",
+          "Heatmap",
+          "Audience (deprecated)"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "heatmap.dimensions",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "enum": [
+            "quality",
+            "popularity",
+            "hotel_class",
+            "price_level"
+          ]
+        },
+        "examples": [
+          "quality",
+          "price_level"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "offset",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "examples": [
+          5
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "operator.exclude.tags",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "string"
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "operator.filter.exclude.tags",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "enum": [
+          "union",
+          "intersection"
+        ],
+        "examples": [
+          "union"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "operator.filter.external.exists",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "enum": [
+          "union",
+          "intersection"
+        ],
+        "examples": [
+          "union"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "operator.filter.references_brand",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "enum": [
+          "union",
+          "intersection"
+        ],
+        "examples": [
+          "union"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "operator.filter.release_country",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "enum": [
+          "intersection",
+          "union"
+        ],
+        "examples": [
+          "union"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "operator.filter.tags",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "enum": [
+          "intersection",
+          "union"
+        ],
+        "default": "union"
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "operator.signal.interests.tags",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "enum": [
+          "union",
+          "intersection"
+        ],
+        "examples": [
+          "union"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "output.heatmap.boundary",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "urn:entity:locality"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "page",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "format": "int32",
+        "minimum": 1,
+        "maximum": 100,
+        "default": 1
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "signal.demographics.age",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "enum": [
+          "35_and_younger",
+          "36_to_55",
+          "24_and_younger",
+          "25_to_29",
+          "30_to_34",
+          "35_to_44",
+          "45_to_54",
+          "55_and_older"
+        ],
+        "examples": [
+          "36_to_55"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "signal.demographics.age.weight",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "oneOf": [
+          {
+            "type": "number",
+            "minimum": 0
+          },
+          {
+            "type": "string",
+            "enum": [
+              "very_low",
+              "low",
+              "mid",
+              "medium",
+              "high",
+              "very_high"
+            ]
+          }
+        ],
+        "examples": [
+          "medium"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "signal.demographics.audiences",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "examples": [
+          "urn:audience:communities",
+          "urn:audience:spending_habits"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "signal.demographics.audiences.weight",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "oneOf": [
+          {
+            "type": "number",
+            "minimum": 0
+          },
+          {
+            "type": "string",
+            "enum": [
+              "very_low",
+              "low",
+              "mid",
+              "medium",
+              "high",
+              "very_high"
+            ]
+          }
+        ],
+        "examples": [
+          "medium"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "signal.demographics.gender",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "enum": [
+          "male",
+          "female"
+        ],
+        "examples": [
+          "male"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "signal.demographics.gender.weight",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "oneOf": [
+          {
+            "type": "number",
+            "minimum": 0
+          },
+          {
+            "type": "string",
+            "enum": [
+              "very_low",
+              "low",
+              "mid",
+              "medium",
+              "high",
+              "very_high"
+            ]
+          }
+        ],
+        "examples": [
+          "medium"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "signal.interests.entities",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "examples": [
+          "636E1B95-6232-43E1-BDFE-37CD209C2CE3,7D2B1DFF-9D5D-44DE-970E-46B80C76CFA6"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "signal.interests.entities.include",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "examples": [
+          "E12345,E67890"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "signal.interests.entities.query",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "array",
+        "items": {
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "address": {
+                  "type": "string"
+                },
+                "resolve_to": {
+                  "type": "string",
+                  "enum": [
+                    "place",
+                    "brand",
+                    "both"
+                  ]
+                }
+              }
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "examples": [
+          {
+            "name": "Balthazar",
+            "address": "80 Spring St, New York"
+          },
+          "Balthazar",
+          {
+            "name": "Naya",
+            "address": "ny",
+            "resolve_to": "both"
+          }
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "signal.interests.entities.weight",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "oneOf": [
+          {
+            "type": "number",
+            "minimum": 0
+          },
+          {
+            "type": "string",
+            "enum": [
+              "very_low",
+              "low",
+              "mid",
+              "medium",
+              "high",
+              "very_high"
+            ]
+          }
+        ],
+        "examples": [
+          "medium"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "signal.interests.tags",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "oneOf": [
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "tag": {
+                  "type": "string"
+                },
+                "weight": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "signal.interests.tags.weight",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "oneOf": [
+          {
+            "type": "number",
+            "minimum": 0
+          },
+          {
+            "type": "string",
+            "enum": [
+              "very_low",
+              "low",
+              "mid",
+              "medium",
+              "high",
+              "very_high"
+            ]
+          }
+        ],
+        "examples": [
+          "medium"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "signal.location",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "POINT(-73.99823 40.722668)"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "signal.location.query",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "New York City"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "signal.location.radius",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "maximum": 800000,
+        "examples": [
+          5000
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "signal.location.weight",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "oneOf": [
+          {
+            "type": "number",
+            "minimum": 0
+          },
+          {
+            "type": "string",
+            "enum": [
+              "very_low",
+              "low",
+              "mid",
+              "medium",
+              "high",
+              "very_high"
+            ]
+          }
+        ],
+        "examples": [
+          "medium"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "sort_by",
+      "tier": "reference_only",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "enum": [
+          "affinity",
+          "distance",
+          "rating",
+          "quality"
+        ],
+        "examples": [
+          "affinity"
+        ]
+      }
+    },
+    {
+      "endpoint": "insights",
+      "entityType": "urn:entity:podcast",
+      "name": "take",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "default": 20,
+        "minimum": 1,
+        "maximum": 50,
+        "examples": [
+          10
+        ]
+      }
+    },
+    {
+      "endpoint": "search",
+      "name": "filter.address",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    {
+      "endpoint": "search",
+      "name": "filter.exists",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "pattern": "^external\\.\\w+$"
+        }
+      }
+    },
+    {
+      "endpoint": "search",
+      "name": "filter.location",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "string"
+      }
+    },
+    {
+      "endpoint": "search",
+      "name": "filter.popularity",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "number",
+        "format": "double",
+        "minimum": 0,
+        "maximum": 1
+      }
+    },
+    {
+      "endpoint": "search",
+      "name": "filter.radius",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "number",
+        "format": "float",
+        "default": 10,
+        "maximum": 100,
+        "minimum": 0
+      }
+    },
+    {
+      "endpoint": "search",
+      "name": "filter.rating",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "number",
+        "format": "double",
+        "minimum": 0,
+        "maximum": 5
+      }
+    },
+    {
+      "endpoint": "search",
+      "name": "filter.tags",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "endpoint": "search",
+      "name": "operator.filter.tags",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "enum": [
+          "intersection",
+          "union"
+        ],
+        "default": "union"
+      }
+    },
+    {
+      "endpoint": "search",
+      "name": "page",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "format": "int32",
+        "minimum": 1,
+        "maximum": 100,
+        "default": 1
+      }
+    },
+    {
+      "endpoint": "search",
+      "name": "query",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "string"
+      }
+    },
+    {
+      "endpoint": "search",
+      "name": "sort_by",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "default": "match",
+        "enum": [
+          "match",
+          "distance",
+          "popularity"
+        ]
+      }
+    },
+    {
+      "endpoint": "search",
+      "name": "take",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "exclusiveMaximum": 200
+      }
+    },
+    {
+      "endpoint": "search",
+      "name": "types",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "enum": [
+            "urn:entity:artist",
+            "urn:entity:book",
+            "urn:entity:brand",
+            "urn:entity:locality",
+            "urn:entity:movie",
+            "urn:entity:person",
+            "urn:entity:place",
+            "urn:entity:podcast",
+            "urn:entity:tv_show",
+            "urn:entity:videogame",
+            "urn:heatmap",
+            "urn:entity:audience"
+          ],
+          "x-enum-descriptions": [
+            "Artist",
+            "Book",
+            "Brand",
+            "Locality (partially supported)",
+            "Movie",
+            "Person",
+            "Place",
+            "Podcast",
+            "TV show",
+            "Videogame",
+            "Heatmap",
+            "Audience (deprecated)"
+          ],
+          "examples": [
+            {
+              "summary": "Artist type",
+              "value": "urn:entity:artist"
+            },
+            {
+              "summary": "TV show type",
+              "value": "urn:entity:tv_show"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "endpoint": "tags",
+      "name": "feature.semantic_search",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "boolean",
+        "default": false
+      }
+    },
+    {
+      "endpoint": "tags",
+      "name": "feature.typo_tolerance",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "boolean",
+        "default": false,
+        "examples": [
+          true
+        ]
+      }
+    },
+    {
+      "endpoint": "tags",
+      "name": "filter.parents.types",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "enum": [
+          "urn:audience:communities",
+          "urn:audience:global_issues",
+          "urn:audience:hobbies_and_interests",
+          "urn:audience:investing_interests",
+          "urn:audience:leisure",
+          "urn:audience:life_stage",
+          "urn:audience:lifestyle_preferences_beliefs",
+          "urn:audience:political_preferences",
+          "urn:audience:professional_area",
+          "urn:audience:spending_habits"
+        ],
+        "examples": [
+          "urn:audience:communities",
+          "urn:audience:global_issues"
+        ]
+      }
+    },
+    {
+      "endpoint": "tags",
+      "name": "filter.popularity.max",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1,
+        "examples": [
+          0.98
+        ]
+      }
+    },
+    {
+      "endpoint": "tags",
+      "name": "filter.popularity.min",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1,
+        "examples": [
+          0.5
+        ]
+      }
+    },
+    {
+      "endpoint": "tags",
+      "name": "filter.query",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "examples": [
+          "vegan"
+        ]
+      }
+    },
+    {
+      "endpoint": "tags",
+      "name": "filter.results.tags",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "examples": [
+          "urn:tag:genre:place:restaurant:japanese",
+          "urn:tag:style:qloo:indie"
+        ]
+      }
+    },
+    {
+      "endpoint": "tags",
+      "name": "filter.tag.types",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "examples": [
+          "urn:tag:accessibility:place",
+          "urn:tag:ambience:qloo",
+          "urn:tag:amenity:place",
+          "urn:tag:category:place"
+        ]
+      }
+    },
+    {
+      "endpoint": "tags",
+      "name": "page",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "format": "int32",
+        "minimum": 1,
+        "maximum": 100,
+        "default": 1
+      }
+    },
+    {
+      "endpoint": "tags",
+      "name": "take",
+      "tier": "guide",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "default": 20,
+        "minimum": 1,
+        "maximum": 50,
+        "examples": [
+          10
+        ]
+      }
+    }
+  ]
+}

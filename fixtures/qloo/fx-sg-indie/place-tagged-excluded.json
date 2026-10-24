@@ -1,0 +1,48 @@
+{
+  "results": {
+    "entities": [
+      {
+        "entity_id": "fx-place-1",
+        "name": "Kampong Craft Taproom",
+        "subtype": "urn:entity:place",
+        "location": {
+          "lat": 1.295,
+          "lon": 103.85
+        },
+        "properties": {
+          "address": "Fictional address"
+        },
+        "tags": [
+          {
+            "id": "urn:tag:fixture:place:craft_beer",
+            "name": "Craft Beer"
+          }
+        ],
+        "query": {
+          "affinity": 0.9012
+        }
+      },
+      {
+        "entity_id": "fx-place-0",
+        "name": "Lorong Lights Bar",
+        "subtype": "urn:entity:place",
+        "location": {
+          "lat": 1.3021,
+          "lon": 103.859
+        },
+        "properties": {
+          "address": "Fictional address"
+        },
+        "tags": [
+          {
+            "id": "urn:tag:fixture:place:craft_beer",
+            "name": "Craft Beer"
+          }
+        ],
+        "query": {
+          "affinity": 0.812
+        }
+      }
+    ]
+  }
+}
