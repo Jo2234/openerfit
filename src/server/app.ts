@@ -1,6 +1,7 @@
 import { Hono } from 'hono';
 import { streamSSE } from 'hono/streaming';
 import { getConnInfo } from '@hono/node-server/conninfo';
+import { isIP } from 'node:net';
 import scenarios from '../../fixtures/scenarios.json';
 import type { AppEnv } from './env';
 import { safeUrlHost } from './env';
@@ -38,6 +39,19 @@ function excerpt(value:unknown):unknown {
   const clean=(v:any):any=>Array.isArray(v)?v.map(clean):v&&typeof v==='object'?Object.fromEntries(Object.entries(v).filter(([k])=>!['akas','short_descriptions','external'].includes(k)).map(([k,a])=>[k,clean(a)])):v;
   const result=clean(value);return Buffer.byteLength(JSON.stringify(result))<=4096?result:null;
 }
+// Public Render traffic passes through Cloudflare, which overwrites this header.
+// Never substitute caller-controlled forwarding headers when it is absent.
+function renderVisitorKey(value:string|undefined):string {
+  const ip=value?.trim();if(!ip)return 'unknown';
+  const family=isIP(ip);if(family===4)return ip;if(family!==6)return 'unknown';
+  try {
+    const canonical=new URL(`http://[${ip}]/`).hostname.slice(1,-1);
+    const [left,right]=canonical.split('::'),a=left?left.split(':'):[],b=right?right.split(':'):[];
+    const words=(right===undefined?a:[...a,...Array(8-a.length-b.length).fill('0'),...b]).map(x=>parseInt(x,16));
+    if(words.slice(0,5).every(x=>x===0)&&words[5]===0xffff)return [words[6]!>>8,words[6]!&255,words[7]!>>8,words[7]!&255].join('.');
+    return words.slice(0,4).map(x=>x.toString(16).padStart(4,'0')).join(':')+'::/64';
+  }catch{return 'unknown';}
+}
 export function createApp(deps:AppDependencies){
   const {env,client,services}=deps;const now=deps.now??Date.now;const runs=deps.runs??new RunStore(50,2*3600000,now);const resolves=services?new ResolveStore(services.normalize,100,30*60000,now):null;const limiter=new RateLimiter(now);const app=new Hono();
   app.use('*',async(c,next)=>{
@@ -56,8 +70,7 @@ export function createApp(deps:AppDependencies){
   });
   app.onError((err,c)=>{if(err instanceof BoundaryError)return c.json({error:{code:err.code,message:err.message,...(err.issues?{issues:err.issues}:{})}},err.httpStatus as any);if(err instanceof QlooError)return c.json({error:{code:err.code,message:err.message}},err.httpStatus as any);if(err instanceof QlooParamError)return c.json({error:{code:err.code,message:err.message}},400);return c.json({error:{code:'internal_error',message:'The request could not be completed.'}},500);});
   const unavailable=()=>{throw new BoundaryError('integration_unavailable','Domain and agent integration is pending (S2/S3). No booking brief was generated.',503);};
-  // Trust only the final hop appended by the deployment proxy, not client-supplied prefixes.
-  const limited=(c:any,kind:'resolve'|'runs')=>{if(env.qloo.mode!=='live')return;let ip='unknown';if(env.trustProxy)ip=c.req.header('x-forwarded-for')?.split(',').at(-1)?.trim()||'unknown';else try{ip=getConnInfo(c).remote.address??'unknown';}catch{}if(!limiter.allow(`${kind}:${ip}`,kind==='resolve'?20:6)||(kind==='runs'&&!limiter.allow('runs:global',60)))throw new BoundaryError('rate_limited','This demo limits runs per hour to protect the shared API quota. Try again later.',429);};
+  const limited=(c:any,kind:'resolve'|'runs')=>{if(env.qloo.mode!=='live')return;let ip='unknown';if(env.trustProxy)ip=renderVisitorKey(c.req.header('cf-connecting-ip'));else try{ip=getConnInfo(c).remote.address??'unknown';}catch{}if(!limiter.allow(`${kind}:${ip}`,kind==='resolve'?20:6)||(kind==='runs'&&!limiter.allow('runs:global',60)))throw new BoundaryError('rate_limited','This demo limits runs per hour to protect the shared API quota. Try again later.',429);};
   app.get('/api/health',c=>c.json({ok:true,version:deps.version??'0.1.0',gitSha:deps.gitSha??'unknown',qloo:{mode:env.qloo.mode,keyPresent:!!env.qloo.apiKey,baseUrl:safeUrlHost(env.qloo.baseUrl)},llm:{mode:env.llm.mode,model:env.llm.model,reachable:null},scenarios:scenarios.filter(s=>env.qloo.mode==='fixture'?s.synthetic:s.liveSafe).map(s=>s.id),integration:{domain:!!services,agent:!!services}}));
   app.get('/api/scenarios',c=>c.json(scenarios.filter(s=>env.qloo.mode==='fixture'?s.synthetic:s.liveSafe)));
   app.post('/api/resolve',async c=>{const parsed=resolveRequestSchema.safeParse(await jsonBody(c.req.raw));if(!parsed.success)throw new BoundaryError('invalid_request','Invalid resolve request.');limited(c,'resolve');if(!services||!resolves)return unavailable();const input=parsed.data;if(new Set(input.roster.map(r=>r.rowId)).size!==input.roster.length)throw new BoundaryError('invalid_request','Duplicate row IDs.');let calls=0;const signal=c.req.raw.signal;const resolveClient:QlooClient={mode:client.mode,search:(args)=>{signal.throwIfAborted();if(++calls>26)throw new BoundaryError('resolve_budget_exhausted','Resolution search budget exhausted.',429);return client.search(args,signal);},insights:async()=>{throw new BoundaryError('invalid_tool','Insights are not allowed during resolution.');},tags:async()=>{throw new BoundaryError('invalid_tool','Tags are not allowed during resolution.');}};const evidence=await services.resolve(input,resolveClient,signal);const resolveId=resolves.put(input,evidence);return c.json({resolveId,headliner:evidence.headliner,roster:evidence.roster,receipts:evidence.receipts});});

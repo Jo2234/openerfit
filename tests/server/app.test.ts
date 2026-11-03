@@ -122,8 +122,8 @@ it('S4: seventh live-mode run is rejected through real resolve/run services with
     insights:async(args)=>callRecord('/v2/insights',buildInsightsQuery(args).params,'{"results":{"entities":[]}}',{origin:'live',status:200,durationMs:0,requestedAt:new Date(1000+seq++).toISOString(),liveFetchedAt:'2026-10-18T00:00:00.000Z',warnings:[]}),tags:async()=>{throw new Error('Unexpected tag call');}};
   const {app,runs}=createApp({env,client:testClient,services:createApplicationServices(env,new NoneLlmAdapter())});
   try{const input=scenarioRequest();input.headlinerQuery='Headliner';input.roster=[{rowId:'r1',name:'Opener',feeAmount:null,bookability:'unknown',notes:''}];
-    const r=await resolved(app,input);for(let i=0;i<6;i++){const response=await app.request('/api/runs',json(r.body,{'x-forwarded-for':'192.0.2.1'}));expect(response.status).toBe(202);const {runId}=await response.json();await (await app.request(`/api/runs/${runId}/events`)).text();expect((await (await app.request(`/api/runs/${runId}`)).json()).state).toBe('done');}
-    const seventh=await app.request('/api/runs',json(r.body,{'x-forwarded-for':'192.0.2.1'}));expect(seventh.status).toBe(429);expect((await seventh.json()).error.code).toBe('rate_limited');
+    const r=await resolved(app,input);for(let i=0;i<6;i++){const response=await app.request('/api/runs',json(r.body,{'cf-connecting-ip':'192.0.2.1'}));expect(response.status).toBe(202);const {runId}=await response.json();await (await app.request(`/api/runs/${runId}/events`)).text();expect((await (await app.request(`/api/runs/${runId}`)).json()).state).toBe('done');}
+    const seventh=await app.request('/api/runs',json(r.body,{'cf-connecting-ip':'192.0.2.1'}));expect(seventh.status).toBe(429);expect((await seventh.json()).error.code).toBe('rate_limited');
   }finally{runs.close();}
 });
 it('v1.1: successful empty ranking reaches unscored DONE brief; internal empty-search origins never become browser input',async()=>{
@@ -138,16 +138,40 @@ it('v1.1: successful empty ranking reaches unscored DONE brief; internal empty-s
   }finally{runs.close();}
 });
 
-it('trusted proxy rate limits use the appended client IP despite changing spoofed prefixes',async()=>{
+it('Render visitor: stable edge IP survives rotating forwarded hops and forged alternative headers',async()=>{
   const env=parseEnv({QLOO_MODE:'live',QLOO_API_KEY:'synthetic-unit-only',TRUST_PROXY:'1'});
-  // No services means allowed requests stop at 503, without any network access.
-  const {app,runs}=createApp({env,client});
+  const {app,runs}=createApp({env,client,now:()=>0});
   const body={headlinerQuery:'Headliner',roster:[{rowId:'r1',name:'Opener'}]};
   try {
-    for(let i=0;i<20;i++)expect((await app.request('/api/resolve',json(body,{'x-forwarded-for':`198.51.100.${i}, 192.0.2.1`}))).status).toBe(503);
-    expect((await app.request('/api/resolve',json(body,{'x-forwarded-for':'203.0.113.9, 192.0.2.1'}))).status).toBe(429);
-    expect((await app.request('/api/resolve',json(body,{'x-forwarded-for':'203.0.113.9, 192.0.2.2'}))).status).toBe(503);
+    for(let i=0;i<20;i++)expect((await app.request('/api/resolve',json(body,{'cf-connecting-ip':'192.0.2.1','x-forwarded-for':`198.51.100.${i}, 10.0.0.${i}`}))).status).toBe(503);
+    const blocked=await app.request('/api/resolve',json(body,{'cf-connecting-ip':'192.0.2.1','x-forwarded-for':'203.0.113.9','x-real-ip':'203.0.113.10','true-client-ip':'203.0.113.11'}));
+    expect(blocked.status).toBe(429);expect((await blocked.json()).error.code).toBe('rate_limited');
+    expect((await app.request('/api/resolve',json(body,{'cf-connecting-ip':'192.0.2.2','x-forwarded-for':'203.0.113.9'}))).status).toBe(503);
   } finally {runs.close();}
+});
+it.each([
+  ['missing/invalid headers share a closed bucket',[undefined,'','not-an-ip','192.0.2.1, 192.0.2.2','192.0.2.1:9000','fe80::1%en0'],'not-an-ip','192.0.2.2'],
+  ['IPv6 addresses share their canonical /64',['2001:db8:abcd:12::1','2001:0DB8:ABCD:0012:1234:0000:0000:0002'],'2001:db8:abcd:12:ffff::3','2001:db8:abcd:13::1'],
+  ['IPv4-mapped IPv6 shares the plain IPv4 bucket',['192.0.2.1','::ffff:192.0.2.1','::FFFF:C000:0201'],'192.0.2.1','::ffff:192.0.2.2'],
+] as const)('Render visitor: %s',async(_label,addresses,blockedAddress,otherAddress)=>{
+  const env=parseEnv({QLOO_MODE:'live',QLOO_API_KEY:'synthetic-unit-only',TRUST_PROXY:'1'});
+  const {app,runs}=createApp({env,client,now:()=>0});
+  const body={headlinerQuery:'Headliner',roster:[{rowId:'r1',name:'Opener'}]};
+  const headers=(ip:string|undefined):Record<string,string>=>ip===undefined?{}:{'cf-connecting-ip':ip};
+  try{
+    for(let i=0;i<20;i++)expect((await app.request('/api/resolve',json(body,headers(addresses[i%addresses.length])))).status).toBe(503);
+    expect((await app.request('/api/resolve',json(body,headers(blockedAddress)))).status).toBe(429);
+    expect((await app.request('/api/resolve',json(body,headers(otherAddress)))).status).toBe(503);
+  }finally{runs.close();}
+});
+it('Render visitor: untrusted mode ignores all edge IP headers',async()=>{
+  const env=parseEnv({QLOO_MODE:'live',QLOO_API_KEY:'synthetic-unit-only',TRUST_PROXY:'0'});
+  const {app,runs}=createApp({env,client,now:()=>0});
+  const body={headlinerQuery:'Headliner',roster:[{rowId:'r1',name:'Opener'}]};
+  try{
+    for(let i=0;i<20;i++)expect((await app.request('/api/resolve',json(body,{'cf-connecting-ip':`192.0.2.${i}`,'x-forwarded-for':`198.51.100.${i}`}))).status).toBe(503);
+    expect((await app.request('/api/resolve',json(body,{'cf-connecting-ip':'203.0.113.1'}))).status).toBe(429);
+  }finally{runs.close();}
 });
 it('health reports the injected deployment commit and defaults to unknown',async()=>{
   for(const gitSha of [undefined,'release-commit']){

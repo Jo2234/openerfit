@@ -1,5 +1,9 @@
 # OpenerFit
 
+[Live portfolio demo](https://openerfit.onrender.com) · [Release verification and known limits](https://github.com/Jo2234/openerfit/releases)
+
+The demo runs on Render Free and may need time to wake after inactivity. Load the live example, review artist identities, build a brief, open its receipts, and export Markdown or HTML. Example venue, fees and availability are fictional inputs. Do not enter confidential information.
+
 OpenerFit helps a venue booker rank their own artist roster by Qloo taste affinity to a headliner, confirm artist identities, explore taste-matched brand, place and podcast partners, and export a receipt-backed booking brief. Affinity is not demand, revenue, availability or a booking guarantee. Fees and bookability are supplied by the booker.
 
 ## Why Qloo is essential
@@ -71,9 +75,9 @@ Set secrets on the server only. The table lists configuration names and purpose,
 | `LLM_SUPPORTS_SEED` | Seed on by default; disable for providers without support |
 | `LLM_REASONING_EFFORT` | Omitted by default; provider-specific |
 | `LLM_PLANNER_MAX_TOKENS`, `LLM_WRITER_MAX_TOKENS`, `LLM_BASELINE_MAX_TOKENS` | Default output caps: 300 / 1200 / 900 |
-| `HOST`, `PORT`, `TRUST_PROXY`, `NODE_ENV` | Bind address, port, trusted proxy setting and production static serving |
+| `HOST`, `PORT`, `TRUST_PROXY`, `NODE_ENV` | Bind address, port, public Render/Cloudflare proxy trust and production static serving |
 
-The existing Groq configuration used for release verification is below. These are explicit overrides of the application defaults above. This configuration completed the local production rehearsal on 3 November 2026. Hosted acceptance remains pending. Availability and quota are account-dependent; no throughput or recommendation-quality improvement is claimed. There is no automatic provider failover.
+The existing Groq configuration used for release verification is below. These are explicit overrides of the application defaults above. This configuration completed local production verification and hosted core acceptance on 3 November 2026. See the release notes for the remaining host checks and known limits. Availability and quota are account-dependent; no throughput or recommendation-quality improvement is claimed. There is no automatic provider failover.
 
 | Setting | Groq release configuration |
 |---|---|
@@ -94,6 +98,8 @@ Supply `LLM_API_KEY` privately on the server. Consult Groq’s [structured-outpu
 
 Follow [Render deployment](docs/deploy-render.md) for the included Dockerfile and Blueprint. Free hosting may sleep and shared API quotas can limit requests; no uptime or capacity guarantee is claimed.
 
+`TRUST_PROXY=1` is for a public Render web service behind Cloudflare. It trusts the edge-overwritten `CF-Connecting-IP` for visitor quotas and the final `X-Forwarded-Proto` scheme for same-origin checks. IPv6 visitors share a /64 quota bucket; IPv4-mapped IPv6 shares its IPv4 bucket. Missing or invalid client-IP headers share a conservative unknown bucket, with no fallback to caller-supplied forwarding headers. Keep trust off for direct hosting. See [Render’s client-IP guidance](https://render.com/articles/host-pocketbase-on-render) and [Cloudflare’s header documentation](https://developers.cloudflare.com/fundamentals/reference/http-headers/).
+
 ## Data and privacy
 
 No accounts, analytics or cookies are implemented. Typed form data is stored locally in the browser; runs and private server caches have separate lifetimes. Qloo and any configured model provider receive relevant inputs. Do not enter confidential information in a public demo. Read [PRIVACY.md](PRIVACY.md) for storage and provider data-use details. Never publish live Qloo response data.
@@ -104,9 +110,9 @@ No accounts, analytics or cookies are implemented. Typed form data is stored loc
 
 <!-- LIVE-STATUS --> The planner, writer and same-model baseline completed with no scripted/template fallback. The run made eight Qloo requests (all HTTP 200) and seven Groq requests (six HTTP 200 plus one token-quota 429 recovered after the requested three-second wait). Four planner decisions completed without duplicate-action rejections. Markdown/HTML exports and two receipt HTTP routes returned 200, with no additional Qloo calls. Local streaming progressed; the measured rehearsal including cleanup and offline receipt proof took about 13.4 seconds. This is one local example, not a capacity or quality benchmark.
 
-As of the 3 November 2026 local verification, no public demo or hosted acceptance had been recorded; hosted results for a deployed SHA are recorded in that GitHub release's notes. Render proxy behavior, independent-client limits, desktop/mobile experience, cancellation/errors and cold start still need verification on the actual Free service. Earlier local failures remain preserved in private release records and are not relabelled as passes.
+The 3 November 2026 hosted acceptance passed a complete real-provider flow on Render Free: planner, writer and baseline with no fallback, all three partner categories, progressive proxy SSE, Markdown/HTML exports without extra per-run Qloo calls, cancellation and request-boundary errors. Desktop (1280 px) and mobile (390 px) browser flows passed, with results and receipt drawers and no horizontal overflow or unexpected console/network errors. All 47 hosted receipt routes matched the run's receipt objects. This does not turn the HTTP evaluator's 27 unavailable upstream raw paths into an independent original-response comparison; the separate local 47/47 comparison above establishes that scope. See the GitHub release notes for the exact deployed SHA, visitor-limit and cold-start outcomes, and remaining limits. Earlier failed local and hosted attempts are preserved and are not relabelled as passes.
 
-Local checks on Node 24: 254 tests in 36 files, typecheck and build passed. Six earlier browser tests used synthetic fixtures. Node 26’s experimental web-storage global caused seven test-environment failures also reproduced on the unchanged source; use Node 24, or run `NODE_OPTIONS=--no-experimental-webstorage pnpm test` on Node 26.
+Local checks on Node 24.22.2 after the host proxy corrections: 269 tests in 36 files, typecheck and build passed. Six earlier browser tests used synthetic fixtures. Node 26’s experimental web-storage global caused seven test-environment failures also reproduced on the unchanged source; use Node 24, or run `NODE_OPTIONS=--no-experimental-webstorage pnpm test` on Node 26.
 
 The Qloo event has ended. Submission remains unverified; these release materials do not establish a submission or late eligibility.
 
