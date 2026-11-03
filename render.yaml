@@ -1,11 +1,8 @@
-# Documentary free-provider recommendations; not yet verified by a live call.
-# Primary Groq: LLM_MODE=openai-compatible, LLM_BASE_URL=https://api.groq.com/openai/v1,
-# LLM_MODEL=qwen/qwen3.8-27b, LLM_REASONING_EFFORT=none, LLM_SUPPORTS_SEED=1,
-# LLM_PLANNER_MAX_TOKENS=1024, LLM_WRITER_MAX_TOKENS=2048, LLM_BASELINE_MAX_TOKENS=4096.
-# Fallback Gemini: LLM_MODE=openai-compatible,
-# LLM_BASE_URL=https://generativelanguage.googleapis.com/v1beta/openai,
-# LLM_MODEL=gemini-3.8-flash, LLM_REASONING_EFFORT=minimal, LLM_SUPPORTS_SEED=0,
-# LLM_PLANNER_MAX_TOKENS=4096, LLM_WRITER_MAX_TOKENS=4096, LLM_BASELINE_MAX_TOKENS=4096.
+# Manual release configuration and verification: docs/deploy-render.md.
+# This template still defaults to LLM_MODE=none (labelled scripted/template output).
+# Real-model release overrides: Groq qwen/qwen3.8-27b, reasoning none, seed off,
+# timeout 45000 ms and planner/writer/baseline caps 512/512/768; see README.
+# Local production verified 3 Nov 2026; hosted results are recorded per GitHub release. Supply keys privately.
 services:
   - type: web
     name: openerfit

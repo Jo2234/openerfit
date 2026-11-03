@@ -35,7 +35,7 @@ These screenshots come from the synthetic fixture demo: fictional artists and ha
 
 ## Quick start
 
-Use Node 24+ and pnpm 12.11.2. Install the full dependency set: the production start command uses `tsx`, a development dependency.
+Use Node 24 (the Docker image’s major version) and pnpm 12.11.2. Install the full dependency set: the production start command uses `tsx`, a development dependency.
 
 ```sh
 pnpm install --frozen-lockfile
@@ -73,20 +73,22 @@ Set secrets on the server only. The table lists configuration names and purpose,
 | `LLM_PLANNER_MAX_TOKENS`, `LLM_WRITER_MAX_TOKENS`, `LLM_BASELINE_MAX_TOKENS` | Default output caps: 300 / 1200 / 900 |
 | `HOST`, `PORT`, `TRUST_PROXY`, `NODE_ENV` | Bind address, port, trusted proxy setting and production static serving |
 
-Recommended free LLM configurations below are a **documentary recommendation; verify with your own key**. Availability, quotas and schema acceptance depend on the provider and account. Switch configurations manually; there is no automatic provider failover.
+The existing Groq configuration used for release verification is below. These are explicit overrides of the application defaults above. This configuration completed the local production rehearsal on 3 November 2026. Hosted acceptance remains pending. Availability and quota are account-dependent; no throughput or recommendation-quality improvement is claimed. There is no automatic provider failover.
 
-| Setting | Primary: Groq | Fallback: Gemini |
-|---|---|---|
-| `LLM_MODE` | `openai-compatible` | `openai-compatible` |
-| `LLM_BASE_URL` | `https://api.groq.com/openai/v1` | `https://generativelanguage.googleapis.com/v1beta/openai` |
-| `LLM_MODEL` | `qwen/qwen3.8-27b` | `gemini-3.8-flash` |
-| `LLM_SUPPORTS_SEED` | `1` | `0` |
-| `LLM_REASONING_EFFORT` | `none` | `minimal` |
-| `LLM_PLANNER_MAX_TOKENS` | `1024` | `4096` |
-| `LLM_WRITER_MAX_TOKENS` | `2048` | `4096` |
-| `LLM_BASELINE_MAX_TOKENS` | `4096` | `4096` |
+| Setting | Groq release configuration |
+|---|---|
+| `LLM_MODE` | `openai-compatible` |
+| `LLM_BASE_URL` | `https://api.groq.com/openai/v1` |
+| `LLM_MODEL` | `qwen/qwen3.8-27b` |
+| `LLM_SUPPORTS_SEED` | `0` |
+| `LLM_REASONING_EFFORT` | `none` |
+| `LLM_TIMEOUT_MS` | `45000` |
+| `LLM_LLAMACPP` | `0` |
+| `LLM_PLANNER_MAX_TOKENS` | `512` |
+| `LLM_WRITER_MAX_TOKENS` | `512` |
+| `LLM_BASELINE_MAX_TOKENS` | `768` |
 
-For either configuration, supply `LLM_API_KEY` privately, use `LLM_TIMEOUT_MS=180000` and `LLM_LLAMACPP=0`. See provider [structured-output documentation](https://console.groq.com/docs/structured-outputs) and [Gemini compatibility documentation](https://ai.google.dev/gemini-api/docs/openai).
+Supply `LLM_API_KEY` privately on the server. Consult Groq’s [structured-output documentation](https://console.groq.com/docs/structured-outputs) and [rate limits](https://console.groq.com/docs/rate-limits). A Groq schema-validation error can be retried once with the identical request. A numeric Groq quota wait is honoured only when it fits the remaining call deadline; otherwise the fallback is labelled `llm_rate_limited`. Each model call makes at most three transport requests. A disclosed fallback keeps the app usable but does not count as real-model release acceptance.
 
 ## Deployment
 
@@ -98,15 +100,21 @@ No accounts, analytics or cookies are implemented. Typed form data is stored loc
 
 ## Limitations and verification
 
-<!-- LIVE-STATUS --> Live Qloo path: pending live verification.
+<!-- LIVE-STATUS --> Local production verification passed on 3 November 2026 with real Qloo and Groq: three ranked artists; eight partners in each of brand, place and podcast; 12 claims; all 47 receipts compared exactly against privately captured original Qloo response paths. No Qloo response dataset is published.
 
-<!-- LIVE-STATUS --> Real-model path: pending live verification.
+<!-- LIVE-STATUS --> The planner, writer and same-model baseline completed with no scripted/template fallback. The run made eight Qloo requests (all HTTP 200) and seven Groq requests (six HTTP 200 plus one token-quota 429 recovered after the requested three-second wait). Four planner decisions completed without duplicate-action rejections. Markdown/HTML exports and two receipt HTTP routes returned 200, with no additional Qloo calls. Local streaming progressed; the measured rehearsal including cleanup and offline receipt proof took about 13.4 seconds. This is one local example, not a capacity or quality benchmark.
+
+As of the 3 November 2026 local verification, no public demo or hosted acceptance had been recorded; hosted results for a deployed SHA are recorded in that GitHub release's notes. Render proxy behavior, independent-client limits, desktop/mobile experience, cancellation/errors and cold start still need verification on the actual Free service. Earlier local failures remain preserved in private release records and are not relabelled as passes.
+
+Local checks on Node 24: 254 tests in 36 files, typecheck and build passed. Six earlier browser tests used synthetic fixtures. Node 26’s experimental web-storage global caused seven test-environment failures also reproduced on the unchanged source; use Node 24, or run `NODE_OPTIONS=--no-experimental-webstorage pnpm test` on Node 26.
+
+The Qloo event has ended. Submission remains unverified; these release materials do not establish a submission or late eligibility.
 
 Fixture tests do not establish live API compatibility, provider acceptance, recommendation quality or measured improvement. Taste affinity does not verify artist availability, fees, audience conversion or partner willingness. Identity confirmation and receipt review remain the booker's responsibility.
 
 ## Project history and provenance
 
-OpenerFit was created on 18 October 2026 for the Qloo Agentic Hackathon, inside the 30 September–30 October 2026 submission period. This public repository is a curated single-commit snapshot of a private development repository whose history runs from 18 to 24 October 2026 (135 commits at the time of the snapshot).
+OpenerFit was created on 18 October 2026 for the Qloo Agentic Hackathon, inside the 30 September–30 October 2026 submission period. The initial public commit `65630b6368ce71b16e1d08fe7e9c1a1c954770db` is a curated snapshot with no parents, drawn from a private development repository whose history runs from 18 to 24 October 2026 (135 commits at the time of the snapshot). Public release corrections must descend from that snapshot; private ancestry is not published.
 
 Private source commit: `1951fc2153a87571ef4c866dd521e378dc5b5477` (branch tip the snapshot was taken from; this provenance note was added on top of it). <!-- SOURCE-COMMIT -->
 

@@ -11,7 +11,7 @@ export async function planPartners(session:ToolSession,adapter:LlmAdapter,scenar
   if(adapter.mode!=='none'&&run.options.planner!=='scripted'){
     for(let turn=0;turn<6;turn++){
       signal.throwIfAborted();const schema=plannerActionSchema(run.request.partnerCategories,[...session.tags.keys()]);
-      const user=plannerUser(run.request,session.ranking!,session.steps,[...session.tags.values()],turn);
+      const user=plannerUser(run.request,session.ranking!,session.steps,[...session.tags.values()],turn,session.categoryProgress());
       let action:z.infer<typeof schema>|null=null;let adapterFailed=false;
       for(const attempt of [0,1] as const){
         signal.throwIfAborted();

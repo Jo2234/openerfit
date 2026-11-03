@@ -13,16 +13,19 @@ function transportSchema(value:unknown):any {
   }
   return result;
 }
-/** Retries share one overall timeout and never use upstream error bodies as evidence. */
+/** Retries share one overall timeout and keep upstream error bodies private. */
 export class OpenAICompatibleAdapter implements LlmAdapter {
   readonly mode='openai-compatible' as const;
   readonly model:string;
   private endpoint:string;
+  private groqEndpoint:boolean;
   constructor(private config:AppEnv['llm'],private options:Options={}) {
     if(!config.model||!config.baseUrl)throw new LlmError('llm_configuration');
     let url:URL;try{url=new URL(config.baseUrl);}catch{throw new LlmError('llm_configuration');}
     if(!['http:','https:'].includes(url.protocol)||url.username||url.password||url.search||url.hash)throw new LlmError('llm_configuration');
     this.endpoint=url.toString().replace(/\/$/,'')+'/chat/completions';this.model=config.model;
+    const endpoint=new URL(this.endpoint);
+    this.groqEndpoint=endpoint.origin==='https://api.groq.com'&&endpoint.pathname==='/openai/v1/chat/completions';
   }
   async health(){return null;}
   async complete(request:LlmRequest):Promise<LlmResult> {
@@ -37,16 +40,36 @@ export class OpenAICompatibleAdapter implements LlmAdapter {
       ...(this.config.reasoningEffort?{reasoning_effort:this.config.reasoningEffort}:{}),
       response_format:{type:'json_schema',json_schema:{name:request.schemaName,strict:true,schema:providerSchema}},
       ...(this.config.llamaCpp?{chat_template_kwargs:{enable_thinking:false}}:{})};
+    const serializedBody=JSON.stringify(body);
     try {
       let response:Response;
+      let validationRetried=false;
       for(let attempt=0;;attempt++){
         signal.throwIfAborted();
-        response=await (this.options.fetch??fetch)(this.endpoint,{method:'POST',headers,body:JSON.stringify(body),signal,redirect:'error'});
+        response=await (this.options.fetch??fetch)(this.endpoint,{method:'POST',headers,body:serializedBody,signal,redirect:'error'});
         if(!response.ok){
-          await response.body?.cancel();signal.throwIfAborted();
-          if(![429,503].includes(response.status)||attempt>=2)throw new LlmError('llm_upstream');
+          let retryValidation=false;
+          if(!validationRetried&&attempt<2&&response.status===400&&this.groqEndpoint&&/^application\/json(?:\s*;|$)/i.test(response.headers.get('content-type')??'')){
+            const reader=response.body?.getReader();
+            if(reader){
+              const cancel=()=>{void reader.cancel().catch(()=>{});};
+              signal.addEventListener('abort',cancel,{once:true});
+              try{
+                const chunks:Uint8Array[]=[];let length=0;
+                while(true){signal.throwIfAborted();const next=await reader.read();signal.throwIfAborted();if(next.done)break;length+=next.value.byteLength;if(length>131072)break;chunks.push(next.value);}
+                if(length<=131072)retryValidation=JSON.parse(Buffer.concat(chunks).toString('utf8'))?.error?.code==='json_validate_failed';
+              }catch{signal.throwIfAborted();}
+              finally{signal.removeEventListener('abort',cancel);await reader.cancel().catch(()=>{});reader.releaseLock();}
+            }else await response.body?.cancel();
+          }else await response.body?.cancel();
+          signal.throwIfAborted();
+          if(retryValidation){validationRetried=true;continue;}
+          const rateLimited=this.groqEndpoint&&response.status===429;
+          if(![429,503].includes(response.status)||attempt>=2)throw new LlmError(rateLimited?'llm_rate_limited':'llm_upstream');
           const retryAfter=response.headers.get('retry-after')?.trim();
-          const seconds=retryAfter&&/^\d+(?:\.\d+)?$/.test(retryAfter)?Math.min(Number(retryAfter),10):attempt===0?1:3;
+          const numeric=retryAfter&&/^\d+(?:\.\d+)?$/.test(retryAfter);
+          const seconds=numeric?(rateLimited?Number(retryAfter):Math.min(Number(retryAfter),10)):attempt===0?1:3;
+          if(rateLimited&&numeric&&seconds*1000+1000>this.config.timeoutMs-(performance.now()-started))throw new LlmError('llm_rate_limited');
           await (this.options.delay??((ms,abort)=>sleep(ms,undefined,{signal:abort})))(seconds*1000,signal);
           signal.throwIfAborted();continue;
         }

@@ -8,6 +8,10 @@ import { QlooError } from '../qloo/errors';
 import { QlooParamError } from '../qloo/params';
 import { actionKey,type PlannerAction } from './protocol';
 type ToolAction=Exclude<PlannerAction,{action:'finish'}>;
+export interface CategoryProgress {
+  readonly category:PartnerCategory;readonly status:'completed'|'pending';
+  readonly partnerCallsUsed:number;readonly partnerCallsRemaining:number;readonly unfilteredAttempted:boolean;
+}
 /** All mutable registries and budgets are per-run. Never construct a client inside a run. */
 export class ToolSession {
   readonly receipts=new Map<string,Receipt>();readonly origins=new Set<DataOrigin>();
@@ -17,6 +21,9 @@ export class ToolSession {
   readonly finds:Record<PartnerCategory,number>={brand:0,place:0,podcast:0};
   tagSearches=0;callCount=0;ranking:RosterRanking|null=null;
   constructor(readonly context:ExecutionContext){for(const origin of context.searchOrigins??[])this.origins.add(origin);for(const receipt of context.searchReceipts){this.receipts.set(receipt.id,receipt);this.origins.add(receipt.origin);}}
+  categoryProgress():readonly CategoryProgress[] {
+    return this.context.run.request.partnerCategories.map(category=>({category,status:this.partners.has(category)?'completed':'pending',partnerCallsUsed:this.finds[category],partnerCallsRemaining:Math.max(0,2-this.finds[category]),unfilteredAttempted:this.seen.has(actionKey({action:'find_partners',category,tagIds:[]}))}));
+  }
   private check(){this.context.signal.throwIfAborted();}
   private count(){this.check();if(this.callCount>=14)throw new Error('Run Qloo call budget exhausted');this.callCount++;}
   private record(call:QlooCallRecord){this.check();this.origins.add(call.origin);}
