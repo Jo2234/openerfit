@@ -15,6 +15,26 @@ const client=new FixtureQlooClient();
 const json=(body:unknown,headers:Record<string,string>={})=>({method:'POST',headers:{'content-type':'application/json',...headers},body:JSON.stringify(body)});
 it('S1: health has modes/boolean key presence and no credential/path/LLM userinfo/query exposure',async()=>{const {app}=createApp({env:parseEnv({QLOO_API_KEY:'SENTINEL-SECRET',LLM_API_KEY:'LLM-SECRET',LLM_BASE_URL:'https://user:password@example.com/v1?token=secret',QLOO_CACHE_DIR:'/private/path'}),client});const response=await app.request('/api/health');const text=await response.text(),body=JSON.parse(text);expect(body.qloo.mode).toBe('fixture');expect(body.qloo.keyPresent).toBe(true);for(const secret of ['SENTINEL-SECRET','LLM-SECRET','password','token=secret','/private/path'])expect(text).not.toContain(secret);expect(response.headers.get('cache-control')).toBe('no-store');expect(response.headers.get('x-content-type-options')).toBe('nosniff');});
 it('S3: >64KB returns 413 before JSON parsing; cross-origin mutations rejected; unknown run 404',async()=>{const {app}=createApp({env:parseEnv({}),client});expect((await app.request('/api/resolve',{method:'POST',headers:{'content-type':'application/json'},body:'x'.repeat(65537)})).status).toBe(413);expect((await app.request('/api/resolve',json({}, {origin:'https://evil.example'}))).status).toBe(403);expect((await app.request('/api/runs/missing')).status).toBe(404);});
+it.each([
+  ['trusted HTTPS termination',true,'https://openerfit.onrender.com',{'x-forwarded-proto':'https'},400],
+  ['foreign origin',true,'https://evil.example',{'x-forwarded-proto':'https'},403],
+  ['untrusted forwarded scheme',false,'https://openerfit.onrender.com',{'x-forwarded-proto':'https'},403],
+  ['downgraded origin',true,'http://openerfit.onrender.com',{'x-forwarded-proto':'https'},403],
+  ['final proxy scheme',true,'https://openerfit.onrender.com',{'x-forwarded-proto':'http, https'},400],
+  ['spoofed scheme prefix',true,'https://openerfit.onrender.com',{'x-forwarded-proto':'https, http'},403],
+  ['invalid forwarded scheme',true,'http://openerfit.onrender.com',{'x-forwarded-proto':'invalid'},403],
+  ['forwarded host cannot change origin',true,'https://evil.example',{'x-forwarded-proto':'https','x-forwarded-host':'evil.example'},403],
+  ['cross-site fetch metadata',true,'https://openerfit.onrender.com',{'x-forwarded-proto':'https','sec-fetch-site':'cross-site'},403],
+  ['direct HTTP unchanged',false,'http://openerfit.onrender.com',{},400],
+  ['trusted direct HTTP unchanged',true,'http://openerfit.onrender.com',{},400],
+] as const)('S3 proxy origin: %s',async(_label,trustProxy,origin,headers,status)=>{
+  const {app,runs}=createApp({env:parseEnv({TRUST_PROXY:trustProxy?'1':'0'}),client});
+  try{
+    const response=await app.request('http://openerfit.onrender.com/api/runs',json({}, {origin,...headers}));
+    expect(response.status).toBe(status);
+    expect((await response.json()).error.code).toBe(status===403?'cross_origin_rejected':'invalid_request');
+  }finally{runs.close();}
+});
 it('S1 boundary: resolve/run execution explicitly unavailable without domain/agent services',async()=>{const {app}=createApp({env:parseEnv({}),client});const response=await app.request('/api/resolve',json({headlinerQuery:'Harbour Lights',roster:[{rowId:'r1',name:'Saltwater Static'}]}));expect(response.status).toBe(503);expect((await response.json()).error.code).toBe('integration_unavailable');});
 it('S4: token buckets permit six per-IP runs and sixty globally; fixture bypasses route limit',()=>{const limiter=new RateLimiter(()=>0);for(let i=0;i<6;i++)expect(limiter.allow('runs:ip',6)).toBe(true);expect(limiter.allow('runs:ip',6)).toBe(false);for(let i=0;i<60;i++)expect(limiter.allow('runs:global',60)).toBe(true);expect(limiter.allow('runs:global',60)).toBe(false);});
 it('S5: exports gate completion; receipt route removes nested fields and caps cleaned bytes without altering receipt', async () => {

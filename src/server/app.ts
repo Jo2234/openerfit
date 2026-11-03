@@ -44,7 +44,12 @@ export function createApp(deps:AppDependencies){
     c.header('Content-Security-Policy',"default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; connect-src 'self'");c.header('X-Content-Type-Options','nosniff');c.header('Referrer-Policy','no-referrer');if(c.req.path.startsWith('/api/'))c.header('Cache-Control','no-store');
     if(!['GET','HEAD','OPTIONS'].includes(c.req.method)){
       if(Number(c.req.header('content-length'))>65536)throw new BoundaryError('body_too_large','Request exceeds 64 KB.',413);
-      const origin=c.req.header('origin');if((origin&&origin!==new URL(c.req.url).origin)||c.req.header('sec-fetch-site')==='cross-site')throw new BoundaryError('cross_origin_rejected','Cross-origin mutations are not accepted.',403);
+      const origin=c.req.header('origin'),requestUrl=new URL(c.req.url);
+      // TLS terminates at the trusted proxy; keep the request host and trust only its final scheme.
+      const forwardedProto=env.trustProxy?c.req.header('x-forwarded-proto')?.split(',').at(-1)?.trim():undefined;
+      const validProto=forwardedProto===undefined||forwardedProto==='http'||forwardedProto==='https';
+      if(validProto&&forwardedProto)requestUrl.protocol=forwardedProto+':';
+      if((origin&&(!validProto||origin!==requestUrl.origin))||c.req.header('sec-fetch-site')==='cross-site')throw new BoundaryError('cross_origin_rejected','Cross-origin mutations are not accepted.',403);
       if(!/^application\/json(?:\s*;|$)/i.test(c.req.header('content-type')??'') && !/^\/api\/runs\/[^/]+\/cancel$/.test(c.req.path))throw new BoundaryError('invalid_request','Use application/json.');
     }
     await next();
